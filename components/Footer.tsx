@@ -1,4 +1,5 @@
-import { JSX, SVGProps } from "react"
+import { SVGProps } from "react"
+
 
 /*
 This example requires some changes to your config:
