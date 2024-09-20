@@ -12,7 +12,7 @@ const HeroSection = () => {
       <Navbar />
       <div className="flex flex-col md:flex-row items-center justify-center p-5 md:py-10 md:px-20">
         <article className="text-black flex flex-col justify-center md:justify-center items-center h-[100vh]">
-          <button className="text-[#FF9217] bg-[#fb8a2013] py-2 px-5 rounded-full w-max flex items-center">
+          <button className="font-DM text-[#FF9217] bg-[#fb8a2013] py-2 px-5 rounded-full w-max flex items-center">
             Available on DappLand
             <CaretRight size={20} />
           </button>
