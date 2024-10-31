@@ -1,0 +1,70 @@
+name: Tokenkit Frontend system setup
+
+on:
+#  push:
+#    branches:
+#      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install SSH Client
+        run: sudo apt-get install -y sshpass
+
+      - name: Transfer files to contabo
+        uses: appleboy/scp-action@v0.1.6
+        with:
+          host: ${{ env.CONTABO_IP }}
+          username: root
+          key: ${{ env.CONTABO_SSH_KEY }}
+          source: "."
+          target: "/home/frontend/"
+        env:
+          CONTABO_IP: ${{ secrets.CONTABO_HOST }}
+          CONTABO_SSH_KEY: ${{ secrets.CONTABO_SSH_KEY }}
+
+      - name: Setup Frontend
+        env:
+          VPS_PASSWORD: ${{ secrets.CONTABO_PASSWORD }}
+        run: |
+          sshpass -p "$VPS_PASSWORD" ssh -o StrictHostKeyChecking=no ${{ secrets.CONTABO_USER }}@${{ secrets.CONTABO_HOST }} << 'EOF'
+            # Navigate to frontend directory
+            cd "/home/frontend/"
+
+            # Set up NodeJs environment and install dependencies
+            pnpm i
+
+            # Run the frontend using pm2
+            npm install -g pm2
+            pm2 startup
+            pnpm run build
+            pm2 start "pnpm run start" --name frontend
+            
+
+            # Configure Nginx for Gunicorn
+            echo "server {
+                    listen 80;
+                    server_name tokenkithq.io www.tokenkithq.io;
+
+                    location / {
+                        proxy_pass http://localhost:3000;
+                        proxy_http_version 1.1;
+                        proxy_set_header Upgrade $http_upgrade;
+                        proxy_set_header Connection 'upgrade';
+                        proxy_set_header Host $host;
+                        proxy_cache_bypass $http_upgrade;
+                    }
+                }" | sudo tee /etc/nginx/sites-available/tokenkithq.io
+
+            # Enable Nginx site and restart Nginx
+            sudo ln -s /etc/nginx/sites-available/tokenkithq.io /etc/nginx/sites-enabled/
+            sudo systemctl restart nginx
+
+            exit 0  # Exit from SSH session
+          EOF
