@@ -40,6 +40,7 @@ jobs:
         run: |
           sshpass -p "$VPS_PASSWORD" ssh -o StrictHostKeyChecking=no ${{ secrets.CONTABO_USER }}@${{ secrets.CONTABO_HOST }} << 'EOF'
 
+            source ~/.bashrc;
             npm install -g pnpm
             npm install -g pm2
             pm2 startup
