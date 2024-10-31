@@ -38,10 +38,12 @@ jobs:
             cd "/home/frontend/"
 
             # Set up NodeJs environment and install dependencies
-            pnpm i
 
             # Run the frontend using pm2
+            npm install -g pnpm
             npm install -g pm2
+
+            pnpm i
             pm2 startup
             pnpm run build
             pm2 start "pnpm run start" --name frontend
@@ -63,7 +65,9 @@ jobs:
                 }" | sudo tee /etc/nginx/sites-available/tokenkithq.io
 
             # Enable Nginx site and restart Nginx
+            sudo rm -f /etc/nginx/sites-enabled/tokenkithq.io
             sudo ln -s /etc/nginx/sites-available/tokenkithq.io /etc/nginx/sites-enabled/
+            sudo nginx -t
             sudo systemctl restart nginx
 
             exit 0  # Exit from SSH session
