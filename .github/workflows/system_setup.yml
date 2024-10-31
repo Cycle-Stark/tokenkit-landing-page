@@ -34,22 +34,24 @@ jobs:
           VPS_PASSWORD: ${{ secrets.CONTABO_PASSWORD }}
         run: |
           sshpass -p "$VPS_PASSWORD" ssh -o StrictHostKeyChecking=no ${{ secrets.CONTABO_USER }}@${{ secrets.CONTABO_HOST }} << 'EOF'
+
+            npm install -g pnpm
+            npm install -g pm2
+            pm2 startup
+
             # Navigate to frontend directory
             cd "/home/frontend/"
 
             # Set up NodeJs environment and install dependencies
 
             # Run the frontend using pm2
-            npm install -g pnpm
-            npm install -g pm2
 
             pnpm i
-            pm2 startup
             pnpm run build
             pm2 start "pnpm run start" --name frontend
             
 
-            # Configure Nginx for Gunicorn
+            # Configure Nginx for the frontend
             echo "server {
                     listen 80;
                     server_name tokenkithq.io www.tokenkithq.io;
