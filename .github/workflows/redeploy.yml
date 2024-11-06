@@ -1,0 +1,48 @@
+name: Redeploy Tokenkit Frontend 
+
+on:
+#  push:
+#    branches:
+#      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install SSH Client
+        run: sudo apt-get install -y sshpass
+
+      - name: Transfer files to contabo
+        uses: appleboy/scp-action@v0.1.6
+        with:
+          host: ${{ env.CONTABO_IP }}
+          username: root
+          key: ${{ env.CONTABO_SSH_KEY }}
+          source: "."
+          target: "/home/frontend/"
+        env:
+          CONTABO_IP: ${{ secrets.CONTABO_HOST }}
+          CONTABO_SSH_KEY: ${{ secrets.CONTABO_SSH_KEY }}
+
+      - name: Setup Frontend
+        env:
+          VPS_PASSWORD: ${{ secrets.CONTABO_PASSWORD }}
+        run: |
+          sshpass -p "$VPS_PASSWORD" ssh -o StrictHostKeyChecking=no ${{ secrets.CONTABO_USER }}@${{ secrets.CONTABO_HOST }} << 'EOF'
+
+            # Navigate to frontend directory
+            cd "/home/frontend/"
+
+            pnpm i
+            pnpm run build
+            pm2 restart frontend
+            
+            # sudo systemctl restart nginx
+
+            exit 0  # Exit from SSH session
+          EOF

@@ -19,7 +19,7 @@ import { Logo } from "@/constants/svg";
 const navigation = [
   { name: "Home", href: "/", current: true },
   { name: "How It Works", href: "/about", current: false },
-  { name: "Docs", href: "/docs", current: false },
+  { name: "Docs", href: "https://docs.tokenkithq.io", current: false },
 ];
 
 function classNames(...classes: string[]) {
@@ -66,9 +66,9 @@ const Navbar = () => {
                     </div>
                   </div>
                   <div className="hidden sm:flex justify-end w-full md:w-max">
-                    <button className="flex items-center justify-around py-2 px-6 w-max font-DM rounded-full bg-[#ffffff1d] border border-[#fff1] text-[#ffffff50] font-semibold hover:bg-white hover:text-black hover:border-aqua hover:cursor-pointer">
+                    <Link href="https://app.tokenkithq.io" className="flex items-center justify-around py-2 px-6 w-max font-DM rounded-full bg-[#ffffff1d] border border-[#fff1] text-[#ffffff50] font-semibold hover:bg-white hover:text-black hover:border-aqua hover:cursor-pointer">
                       Explore TokenKit
-                    </button>
+                    </Link>
                   </div>
                 </div>
                 <div className=" flex items-center sm:hidden">

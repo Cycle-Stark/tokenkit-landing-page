@@ -1,5 +1,6 @@
-import { SVGProps } from "react"
-
+import { useToast } from "@/hooks/useToast";
+import { SVGProps } from "react";
+import { useForm } from "react-hook-form";
 
 /*
 This example requires some changes to your config:
@@ -17,33 +18,33 @@ This example requires some changes to your config:
       */
 const navigation = {
   solutions: [
-    { name: 'Marketing', href: '#' },
-    { name: 'Analytics', href: '#' },
-    { name: 'Commerce', href: '#' },
-    { name: 'Insights', href: '#' },
+    { name: "Marketing", href: "#" },
+    { name: "Analytics", href: "#" },
+    { name: "Commerce", href: "#" },
+    { name: "Insights", href: "#" },
   ],
   support: [
-    { name: 'Pricing', href: '#' },
-    { name: 'Documentation', href: '#' },
-    { name: 'Guides', href: '#' },
-    { name: 'API Status', href: '#' },
+    { name: "Pricing", href: "#" },
+    { name: "Documentation", href: "#" },
+    { name: "Guides", href: "#" },
+    { name: "API Status", href: "#" },
   ],
   company: [
-    { name: 'About', href: '#' },
-    { name: 'Blog', href: '#' },
-    { name: 'Jobs', href: '#' },
-    { name: 'Press', href: '#' },
-    { name: 'Partners', href: '#' },
+    { name: "About", href: "#" },
+    { name: "Blog", href: "#" },
+    { name: "Jobs", href: "#" },
+    { name: "Press", href: "#" },
+    { name: "Partners", href: "#" },
   ],
   legal: [
-    { name: 'Claim', href: '#' },
-    { name: 'Privacy', href: '#' },
-    { name: 'Terms', href: '#' },
+    { name: "Claim", href: "#" },
+    { name: "Privacy", href: "#" },
+    { name: "Terms", href: "#" },
   ],
   social: [
     {
-      name: 'Facebook',
-      href: '#',
+      name: "Facebook",
+      href: "#",
       icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
@@ -55,8 +56,8 @@ const navigation = {
       ),
     },
     {
-      name: 'Instagram',
-      href: '#',
+      name: "Instagram",
+      href: "#",
       icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
@@ -68,8 +69,8 @@ const navigation = {
       ),
     },
     {
-      name: 'Twitter',
-      href: '#',
+      name: "Twitter",
+      href: "#",
       icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
@@ -77,8 +78,8 @@ const navigation = {
       ),
     },
     {
-      name: 'GitHub',
-      href: '#',
+      name: "GitHub",
+      href: "#",
       icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
@@ -90,8 +91,8 @@ const navigation = {
       ),
     },
     {
-      name: 'YouTube',
-      href: '#',
+      name: "YouTube",
+      href: "#",
       icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
@@ -103,9 +104,42 @@ const navigation = {
       ),
     },
   ],
-}
+};
 
 export default function Footer() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const { toaster } = useToast();
+
+  const onSubmit = async (data: { email: any }) => {
+    try {
+      const response = await fetch(
+        "https://api.tokenkithq.io/api/subscribers/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email: data.email }),
+        }
+      );
+
+      if (response.ok) {
+        console.log("Subscription successful");
+        toaster("success", "Subscription successful");
+      } else {
+        console.error("Subscription failed");
+        toaster("success", "Subscription failed");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   return (
     <footer className="bg-[#030014]" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
@@ -116,11 +150,16 @@ export default function Footer() {
           <div className="grid grid-cols-2 gap-8 xl:col-span-2">
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-sm font-semibold leading-6 text-white">Solutions</h3>
+                <h3 className="text-sm font-semibold leading-6 text-white">
+                  Solutions
+                </h3>
                 <ul role="list" className="mt-6 space-y-4">
                   {navigation.solutions.map((item) => (
                     <li key={item.name}>
-                      <a href={item.href} className="text-sm leading-6 text-gray-300 hover:text-white">
+                      <a
+                        href={item.href}
+                        className="text-sm leading-6 text-gray-300 hover:text-white"
+                      >
                         {item.name}
                       </a>
                     </li>
@@ -128,11 +167,16 @@ export default function Footer() {
                 </ul>
               </div>
               <div className="mt-10 md:mt-0">
-                <h3 className="text-sm font-semibold leading-6 text-white">Support</h3>
+                <h3 className="text-sm font-semibold leading-6 text-white">
+                  Support
+                </h3>
                 <ul role="list" className="mt-6 space-y-4">
                   {navigation.support.map((item) => (
                     <li key={item.name}>
-                      <a href={item.href} className="text-sm leading-6 text-gray-300 hover:text-white">
+                      <a
+                        href={item.href}
+                        className="text-sm leading-6 text-gray-300 hover:text-white"
+                      >
                         {item.name}
                       </a>
                     </li>
@@ -142,11 +186,16 @@ export default function Footer() {
             </div>
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-sm font-semibold leading-6 text-white">Company</h3>
+                <h3 className="text-sm font-semibold leading-6 text-white">
+                  Company
+                </h3>
                 <ul role="list" className="mt-6 space-y-4">
                   {navigation.company.map((item) => (
                     <li key={item.name}>
-                      <a href={item.href} className="text-sm leading-6 text-gray-300 hover:text-white">
+                      <a
+                        href={item.href}
+                        className="text-sm leading-6 text-gray-300 hover:text-white"
+                      >
                         {item.name}
                       </a>
                     </li>
@@ -154,11 +203,16 @@ export default function Footer() {
                 </ul>
               </div>
               <div className="mt-10 md:mt-0">
-                <h3 className="text-sm font-semibold leading-6 text-white">Legal</h3>
+                <h3 className="text-sm font-semibold leading-6 text-white">
+                  Legal
+                </h3>
                 <ul role="list" className="mt-6 space-y-4">
                   {navigation.legal.map((item) => (
                     <li key={item.name}>
-                      <a href={item.href} className="text-sm leading-6 text-gray-300 hover:text-white">
+                      <a
+                        href={item.href}
+                        className="text-sm leading-6 text-gray-300 hover:text-white"
+                      >
                         {item.name}
                       </a>
                     </li>
@@ -168,23 +222,34 @@ export default function Footer() {
             </div>
           </div>
           <div className="mt-10 xl:mt-0">
-            <h3 className="text-sm font-semibold leading-6 text-white">Subscribe to our newsletter</h3>
+            <h3 className="text-sm font-semibold leading-6 text-white">
+              Subscribe to our newsletter
+            </h3>
             <p className="mt-2 text-sm leading-6 text-gray-300">
-              The latest news, articles, and resources, sent to your inbox weekly.
+              The latest news, articles, and resources, sent to your inbox
+              weekly.
             </p>
-            <form className="mt-6 sm:flex sm:max-w-md">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="mt-6 sm:flex sm:max-w-md"
+            >
               <label htmlFor="email-address" className="sr-only">
                 Email address
               </label>
               <input
                 type="email"
-                name="email-address"
+                {...register("email", { required: "Email is required" })}
                 id="email-address"
                 autoComplete="email"
-                required
                 className="w-full min-w-0 appearance-none rounded-md border-0 bg-white/5 px-3 py-1.5 text-base text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:w-64 sm:text-sm sm:leading-6 xl:w-full"
                 placeholder="Enter your email"
               />
+              {errors.email && (
+                <span className="text-red-500 text-sm">
+                  {errors.email.message}
+                </span>
+              )}
+
               <div className="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
                 <button
                   type="submit"
@@ -199,7 +264,11 @@ export default function Footer() {
         <div className="mt-16 border-t border-white/10 pt-8 sm:mt-20 md:flex md:items-center md:justify-between lg:mt-24">
           <div className="flex space-x-6 md:order-2">
             {navigation.social.map((item) => (
-              <a key={item.name} href={item.href} className="text-gray-500 hover:text-gray-400">
+              <a
+                key={item.name}
+                href={item.href}
+                className="text-gray-500 hover:text-gray-400"
+              >
                 <span className="sr-only">{item.name}</span>
                 <item.icon className="h-6 w-6" aria-hidden="true" />
               </a>
@@ -211,5 +280,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

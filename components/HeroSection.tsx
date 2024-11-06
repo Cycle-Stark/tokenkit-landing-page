@@ -5,8 +5,11 @@ import Image from "next/image";
 import React from "react";
 import Navbar from "./Navbar";
 import { CaretRight, Copy } from "@phosphor-icons/react";
+import Link from "next/link";
+import { useCopy } from "@/hooks/useCopy";
 
 const HeroSection = () => {
+  const copyText = useCopy();
   return (
     <div className="bg-hero-bg bg-cover bg-center h-[140vh]">
       <Navbar />
@@ -25,11 +28,11 @@ const HeroSection = () => {
             Tokenkit keeps track of tokens listed on the starknet network
             enhancing user experience and save time when building.
           </h2>
-          <button className=" py-3 px-6 w-max font-DM rounded-md bg-[#FF757D] text-white font-semibold hover:bg-white hover:text-black hover:border-aqua hover:cursor-pointer">
+          <Link href="https://docs.tokenkithq.io" className=" py-3 px-6 w-max font-DM rounded-md bg-[#FF757D] text-white font-semibold hover:bg-white hover:text-black hover:border-aqua hover:cursor-pointer">
             View the Docs
-          </button>
-          <button className="flex items-center justify-around py-3 px-6 w-max font-DM rounded-md bg-[#ffffff1d] border border-[#fff1] text-[#ffffff50] font-semibold hover:bg-white hover:text-black hover:border-aqua hover:cursor-pointer my-[20px] md:my-[30px]">
-            $ npm i starknet-tokenkit <Copy size={20} />
+          </Link>
+          <button onClick={()=>copyText("npm install starknet-tokenkit", `Link copied!`)} className="flex items-center justify-around py-3 px-6 w-max font-DM rounded-md bg-[#ffffff1d] border border-[#fff1] text-[#ffffff50] font-semibold hover:bg-white hover:text-black hover:border-aqua hover:cursor-pointer my-[20px] md:my-[30px]">
+            $ npm i starknet-tokenkit <Copy size={20} className="ml-2" />
           </button>
         </article>
       </div>
