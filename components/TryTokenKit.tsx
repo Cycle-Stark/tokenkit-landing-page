@@ -1,5 +1,4 @@
 import { TokenKitImg } from "@/constants/svg";
-import { aboutSource } from "@/helpers/aboutSource";
 import Image from "next/image";
 import React from "react";
 

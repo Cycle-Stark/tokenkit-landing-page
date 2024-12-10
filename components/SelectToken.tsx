@@ -2,6 +2,7 @@
 
 import { SelectTokenModal, IToken } from "starknet-tokenkit"
 import { useState } from "react"
+import TokenPreviewComponent from "./TokenPreviewComponent"
 
 /*
 
@@ -23,7 +24,7 @@ const SelectToken = () => {
                 callBackFunc={setToken} 
                 animation={'fade'} // Optional - Default 'fade', Options: 'bounce' | 'slide' | 'ease' | 'fade'
             >
-                <button>select</button>
+                 <TokenPreviewComponent token={token} />
             </SelectTokenModal>
         </div>
     )

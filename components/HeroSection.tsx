@@ -1,7 +1,5 @@
 "use client";
 
-import { HeroBg } from "@/constants/svg";
-import Image from "next/image";
 import React from "react";
 import Navbar from "./Navbar";
 import { CaretRight, Copy } from "@phosphor-icons/react";
