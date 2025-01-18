@@ -26,13 +26,13 @@ interface ThemeConfig {
 }
 
 // Helper function to adjust color opacity using hex
-const adjustColorOpacity = (hex: string, opacity: number) => {  
+const adjustColorOpacity = (hex: string, opacity: number) => {
   // Calculate opacity value (0-255)
   const a = Math.round(opacity * 255);
-  
+
   // Convert back to hex
   const hexOpacity = a.toString(16).padStart(2, '0');
-  
+
   return `#${hex.slice(1, 7)}${hexOpacity}`;
 };
 
@@ -66,9 +66,9 @@ const colorSchemes: Record<ColorScheme, { textColor: string }> = {
 
 const borderRadiusVariants: Record<BorderRadius, { r: string }> = {
   none: { r: '0px' },
-  small: { r: '4px' },
-  medium: { r: '8px' },
-  large: { r: '12px' },
+  small: { r: '10px' },
+  medium: { r: '20px' },
+  large: { r: '30px' },
 };
 
 const headerFooterVariants: Record<HeaderFooterStyle, { headerFooterBg: string }> = {
@@ -114,9 +114,9 @@ const primaryColorVariants: Record<PrimaryColorScheme, { primaryColor: string }>
   green: { primaryColor: '#16A34A' },
 };
 
-const RadioOption = ({ value, label, style }: { value: string; label: string; style?:string }) => (
+const RadioOption = ({ value, label, style }: { value: string; label: string; style?: string }) => (
   <div className="flex flex-col items-center">
-    <RadioGroupItem value={value} id={`radio-${value}`} className={`w-10 h-10 border-4 border-white ${style}` } />
+    <RadioGroupItem value={value} id={`radio-${value}`} className={`w-10 h-10 border-4 border-white ${style}`} />
     <Label className='mt-4' htmlFor={`radio-${value}`}>{label}</Label>
   </div>
 );
@@ -132,11 +132,11 @@ const Playground = () => {
   const [selectedToken, setSelectedToken] = useState<any>(null);
   const [colorScheme, setColorScheme] = useState<ColorScheme>('white');
   const [themeMode, setThemeMode] = useState<ThemeMode>('dark');
-  const [borderType, setBorderType] = useState<BorderRadius>('small');
-  const [headerFooterStyle, setHeaderFooterStyle] = useState<HeaderFooterStyle>('lightMode');
+  const [borderType, setBorderType] = useState<BorderRadius>('medium');
+  const [headerFooterStyle, setHeaderFooterStyle] = useState<HeaderFooterStyle>('gradientOne');
   const [fontFamily, setFontFamily] = useState<FontFamily>('DM Sans');
   const [searchStyle, setSearchStyle] = useState<SearchStyle>('filled');
-  const [primaryColorScheme, setPrimaryColorScheme] = useState<PrimaryColorScheme>('teal');
+  const [primaryColorScheme, setPrimaryColorScheme] = useState<PrimaryColorScheme>('purple');
 
   const currentPrimaryColor = primaryColorVariants[primaryColorScheme].primaryColor;
   const searchStyleVariants = getSearchStyleVariants(currentPrimaryColor);
@@ -151,6 +151,8 @@ const Playground = () => {
     ...primaryColorVariants[primaryColorScheme],
   };
 
+  console.log(currentTheme)
+
   return (
     <section className="bg-[#030014]">
       <TokenKitWrapper
@@ -163,9 +165,12 @@ const Playground = () => {
           <SelectTokenContainer
             selectedToken={selectedToken}
             callBackFunc={setSelectedToken}
-            modalHeight="500px"
+            modalHeight="600px"
           />
-
+          <p className='text-center'>Selected Token</p>
+          <div style={{whiteSpace: "pre", maxWidth: "450px", overflow: "hidden", margin: "auto", background: "rgba(255, 255, 255, 0.1)", borderRadius: "20px", padding: "10px", fontSize: "14px"}}>
+            {JSON.stringify(selectedToken, null, 4)}
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20">
             {/* Color Scheme */}
             <div className="space-y-2">
@@ -182,7 +187,7 @@ const Playground = () => {
             </div>
 
             {/* Theme Mode */}
-            <div className="space-y-2">
+            {/* <div className="space-y-2">
               <h3 className="text-sm font-medium mb-5 text-center">Theme Mode</h3>
               <RadioGroup
                 className="flex flex-row justify-center"
@@ -191,6 +196,20 @@ const Playground = () => {
               >
                 <RadioOption value="light" label="Light" style='fill-white' />
                 <RadioOption value="dark" label="Dark" style='fill-black' />
+              </RadioGroup>
+            </div> */}
+
+            {/* Modal Theme */}
+            <div className="space-y-2">
+              <h3 className="text-sm font-medium mb-5 text-center">Modal Theme</h3>
+              <RadioGroup
+                className="flex flex-row justify-center"
+                value={headerFooterStyle}
+                onValueChange={(value) => setHeaderFooterStyle(value as HeaderFooterStyle)}
+              >
+                <RadioOption style='fill-white' value="lightMode" label="Light Mode" />
+                <RadioOption style='fill-white' value="darkMode" label="Dark Mode" />
+                <RadioOption style='fill-white' value="gradientOne" label="Gradient One" />
               </RadioGroup>
             </div>
 
@@ -206,20 +225,6 @@ const Playground = () => {
                 <RadioOption style='fill-white' value="small" label="Small" />
                 <RadioOption style='fill-white' value="medium" label="Medium" />
                 <RadioOption style='fill-white' value="large" label="Large" />
-              </RadioGroup>
-            </div>
-
-            {/* Modal Theme */}
-            <div className="space-y-2">
-              <h3 className="text-sm font-medium mb-5 text-center">Modal Theme</h3>
-              <RadioGroup
-                className="flex flex-row justify-center"
-                value={headerFooterStyle}
-                onValueChange={(value) => setHeaderFooterStyle(value as HeaderFooterStyle)}
-              >
-                <RadioOption style='fill-white' value="lightMode" label="Light Mode" />
-                <RadioOption style='fill-white' value="darkMode" label="Dark Mode" />
-                <RadioOption style='fill-white' value="gradientOne" label="Gradient One" />
               </RadioGroup>
             </div>
 
