@@ -42,7 +42,7 @@ jobs:
             pnpm run build
             pm2 restart frontend
             
-            # sudo systemctl restart nginx
+            sudo systemctl restart nginx
 
             exit 0  # Exit from SSH session
           EOF
