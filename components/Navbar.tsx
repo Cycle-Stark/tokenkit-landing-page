@@ -12,9 +12,9 @@ import { Logo } from "@/constants/svg";
 
 const navigation = [
   { name: "Home", href: "/", current: true },
-  { name: "List Token", href: "/list-token", current: false },
-  { name: "Token Table", href: "/tokens", current: false },
-  { name: "How It Works", href: "/about", current: false },
+  // { name: "List Token", href: "/list-token", current: false },
+  { name: "API", href: "https://app.tokenkithq.io", current: false },
+  // { name: "How It Works", href: "/about", current: false },
   { name: "Docs", href: "https://docs.tokenkithq.io", current: false },
 ];
 
