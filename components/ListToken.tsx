@@ -2,7 +2,6 @@ import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import React from "react";
 import TextInput from "./inputs/TextInput";
-import Link from "next/link";
 import { UploadSimple } from "@phosphor-icons/react";
 
 const ListToken = () => {
@@ -22,13 +21,10 @@ const ListToken = () => {
             .min(13, "Min of 6 Characters required")
             .required("Shortlink is Required"),
         })}
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit={() => {
           setTimeout(async () => {
             // Use the modifiedPhoneNumber in your API request
-            const requestData = {
-              ...values,
-            };
-
+            
             // Call the Initiate Register User Mutation
           }, 400);
         }}

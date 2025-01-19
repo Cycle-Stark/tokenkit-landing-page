@@ -1,12 +1,13 @@
 export type TokenType = {
-  address: string;
-  decimals: number;
-  name: string;
-  symbol: string;
-  totalSupply: bigint;
-  is_erc20: boolean;
-  is_erc721: boolean;
-  is_touched: boolean;
+    id: number
+    address: string;
+    decimals: number;
+    name: string;
+    symbol: string;
+    totalSupply: bigint;
+    is_erc20: boolean;
+    is_erc721: boolean;
+    is_touched: boolean;
 };
 
 type TokenBalance = {

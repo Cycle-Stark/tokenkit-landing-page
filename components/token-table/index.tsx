@@ -43,11 +43,12 @@ export default function PatientTable<TData, TValue>({
   });
 
   const {
-    register,
-    handleSubmit,
+    // register,
+    // handleSubmit,
     control,
-    formState: { errors },
+    // formState: { errors },
   } = useForm();
+  
   return (
     <DataTable table={table} columns={columns} data={data}>
       <div  className="flex items-center justify-between my-1 p-3">
@@ -71,7 +72,7 @@ export default function PatientTable<TData, TValue>({
         <Controller
           name="region"
           control={control}
-          render={({ field }) => (
+          render={({  }) => (
             <Select
               defaultValue="all"
               value={
@@ -100,7 +101,7 @@ export default function PatientTable<TData, TValue>({
         <Controller
           name="sizes"
           control={control}
-          render={({ field }) => (
+          render={({  }) => (
             <Select
               defaultValue="all"
               value={
@@ -129,7 +130,7 @@ export default function PatientTable<TData, TValue>({
         <Controller
           name="property type"
           control={control}
-          render={({ field }) => (
+          render={({  }) => (
             <Select
               defaultValue="all"
               value={

@@ -1,12 +1,9 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 
-import { useQuery } from "@tanstack/react-query";
-import { TokenDataColumns } from "./columns";
-import TokenTable from ".";
 
-const TokenData = ({ status }: { status: string }) => {
+const TokenData = ({  }: { status: string }) => {
 
   // const getAllProperties = async () => {
   //   const res = await fetch(`${AtlasBackendApi}/admin/getAllProperties`, {
@@ -28,31 +25,29 @@ const TokenData = ({ status }: { status: string }) => {
   //   queryFn: getAllProperties,
   // });
 
-  // console.log("data data", data);
+  // const generateTblData = (item: TokenType): TokenType => {
+  //   return {
+  //   id:item.id,
+  //   firstName:item.firstName,
+  //   lastName:item.lastName,
+  //   dateOfBirth:item.dateOfBirth,
+  //   gender:item.gender,
+  //   contactNumber:item.contactNumber,
+  //   email:item.email,
+  //   address:item.address,
+  //   emergencyContact:item.emergencyContact,
+  //   medicalHistory:item.medicalHistory,
+  //   };
+  // };
 
-  const generateTblData = (item: TokenType): TokenType => {
-    return {
-    id:item.id,
-    firstName:item.firstName,
-    lastName:item.lastName,
-    dateOfBirth:item.dateOfBirth,
-    gender:item.gender,
-    contactNumber:item.contactNumber,
-    email:item.email,
-    address:item.address,
-    emergencyContact:item.emergencyContact,
-    medicalHistory:item.medicalHistory,
-    };
-  };
-
-  const tableData = Array.isArray(TokenHealthDataSource)
-    ? TokenHealthDataSource?.map((element: TokenType) => generateTblData(element))
-    : // .filter((item) => item.status === status)
-      [];
-  console.log("table data", tableData);
+  // const tableData = Array.isArray(TokenHealthDataSource)
+  //   ? TokenHealthDataSource?.map((element: TokenType) => generateTblData(element))
+  //   : // .filter((item) => item.status === status)
+  //     [];
+  // console.log("table data", tableData);
   return (
     <article>
-      <TokenTable columns={TokenDataColumns} data={tableData} />
+      {/* <TokenTable columns={TokenDataColumns} data={tableData} /> */}
     </article>
   );
 };

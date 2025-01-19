@@ -110,12 +110,11 @@ export default function Footer() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
   } = useForm();
 
   const { toaster } = useToast();
 
-  const onSubmit = async (data: { email: any }) => {
+  const onSubmit = async (data: any) => {
     try {
       const response = await fetch(
         "https://api.tokenkithq.io/api/subscribers/",
@@ -124,7 +123,7 @@ export default function Footer() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ email: data.email }),
+          body: JSON.stringify({ email: data?.email }),
         }
       );
 
@@ -230,7 +229,7 @@ export default function Footer() {
               weekly.
             </p>
             <form
-              onSubmit={handleSubmit(onSubmit)}
+              onSubmit={handleSubmit((e: any) => onSubmit(e))}
               className="mt-6 sm:flex sm:max-w-md"
             >
               <label htmlFor="email-address" className="sr-only">
@@ -244,11 +243,11 @@ export default function Footer() {
                 className="w-full min-w-0 appearance-none rounded-md border-0 bg-white/5 px-3 py-1.5 text-base text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:w-64 sm:text-sm sm:leading-6 xl:w-full"
                 placeholder="Enter your email"
               />
-              {errors.email && (
+              {/* {errors.email && (
                 <span className="text-red-500 text-sm">
                   {errors.email.message}
                 </span>
-              )}
+              )} */}
 
               <div className="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
                 <button

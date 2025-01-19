@@ -4,7 +4,7 @@ import { Label } from '@/components/ui/label';
 import { SelectTokenContainer } from 'starknet-tokenkit';
 import { TokenKitWrapper } from 'starknet-tokenkit';
 
-type ThemeMode = 'light' | 'dark';
+// type ThemeMode = 'light' | 'dark';
 type ColorScheme = 'blue' | 'purple' | 'white';
 type BorderRadius = 'none' | 'small' | 'medium' | 'large';
 type HeaderFooterStyle = 'lightMode' | 'darkMode' | 'gradientOne';
@@ -131,7 +131,7 @@ const RadioOption = ({ value, label, style }: { value: string; label: string; st
 const Playground = () => {
   const [selectedToken, setSelectedToken] = useState<any>(null);
   const [colorScheme, setColorScheme] = useState<ColorScheme>('white');
-  const [themeMode, setThemeMode] = useState<ThemeMode>('dark');
+  // const [themeMode, _setThemeMode] = useState<ThemeMode>('dark');
   const [borderType, setBorderType] = useState<BorderRadius>('medium');
   const [headerFooterStyle, setHeaderFooterStyle] = useState<HeaderFooterStyle>('gradientOne');
   const [fontFamily, setFontFamily] = useState<FontFamily>('DM Sans');
@@ -142,7 +142,7 @@ const Playground = () => {
   const searchStyleVariants = getSearchStyleVariants(currentPrimaryColor);
 
   const currentTheme = {
-    ...themeVariants[themeMode],
+    ...themeVariants['dark'],
     ...colorSchemes[colorScheme],
     ...borderRadiusVariants[borderType],
     ...headerFooterVariants[headerFooterStyle],
@@ -150,8 +150,6 @@ const Playground = () => {
     ...searchStyleVariants[searchStyle],
     ...primaryColorVariants[primaryColorScheme],
   };
-
-  console.log(currentTheme)
 
   return (
     <section className="bg-[#030014]">

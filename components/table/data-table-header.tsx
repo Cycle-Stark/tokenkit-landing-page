@@ -1,12 +1,12 @@
 import { cn } from "@/lib/utils";
-import { Button } from "../ui/button";
+// import { Button } from "../ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "../ui/dropdown-menu";
-import {
-    ArrowDownIcon,
-    ArrowUpIcon,
-    CaretSortIcon,
-    EyeNoneIcon,
-  } from "@radix-ui/react-icons";
+// import {
+//     ArrowDownIcon,
+//     ArrowUpIcon,
+//     CaretSortIcon,
+//     EyeNoneIcon,
+//   } from "@radix-ui/react-icons";
 import { Column } from "@tanstack/react-table";
 
   
@@ -29,7 +29,7 @@ import { Column } from "@tanstack/react-table";
       <div className={cn("flex items-center text-black", className)}>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button
+            {/* <Button
               variant="ghost"
               size="sm"
               className="-ml-3 h-8 data-[state=open]:bg-accent"
@@ -42,20 +42,20 @@ import { Column } from "@tanstack/react-table";
               ) : (
                 <CaretSortIcon className="ml-1 h-4 min-w-[16px]" />
               )}
-            </Button>
+            </Button> */}
           </DropdownMenuTrigger>
           <DropdownMenuContent align="start">
             <DropdownMenuItem onClick={() => column.toggleSorting(false)}>
-              <ArrowUpIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
+              {/* <ArrowUpIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" /> */}
               Asc
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => column.toggleSorting(true)}>
-              <ArrowDownIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
+              {/* <ArrowDownIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" /> */}
               Desc
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={() => column.toggleVisibility(false)}>
-              <EyeNoneIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
+              {/* <EyeNoneIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70" /> */}
               Hide
             </DropdownMenuItem>
           </DropdownMenuContent>

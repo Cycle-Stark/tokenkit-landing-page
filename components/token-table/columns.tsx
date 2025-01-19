@@ -1,15 +1,6 @@
 import { DataTableColumnHeader } from "@/components/table/data-table-header";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 import { Checkbox } from "@/components/ui/checkbox";
-import { SealCheck } from "@phosphor-icons/react";
 import { ColumnDef } from "@tanstack/react-table";
-import { useState } from "react";
 
 export const TokenDataColumns: ColumnDef<TokenType>[] = [
   {
@@ -83,7 +74,7 @@ export const TokenDataColumns: ColumnDef<TokenType>[] = [
     id: "actions",
     accessorKey: "ACTIONS",
     header: "Actions",
-    cell: ({ cell }) => {
+    cell: ({  }) => {
       return null;
     },
   },

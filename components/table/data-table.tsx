@@ -3,18 +3,13 @@
 import * as React from "react";
 import {
   ColumnDef,
-  ColumnFiltersState,
   Table as TableTanstack,
   flexRender,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  useReactTable,
 } from "@tanstack/react-table";
 
 
-import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
+// import { useRouter } from "next/navigation";
+// import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -32,7 +27,7 @@ interface DataTableProps<TData, TValue> {
 
 export function DataTable<TData, TValue>({
   columns,
-  data,
+  // data,
   children,
   table,
 }: DataTableProps<TData, TValue>) {
@@ -50,22 +45,23 @@ export function DataTable<TData, TValue>({
   //     columnFilters,
   //   },
   // });
-  const { pageIndex } = table.getState().pagination;
-  const router = useRouter();
+  // const { pageIndex } = table.getState().pagination;
+  // const router = useRouter();
 
   const paginationButtons = [];
   if (table.getPageCount()) {
     for (let i = 0; i < table!.getPageCount(); i++) {
       paginationButtons.push(
-        <Button
-          className={`ml-1 ${i === pageIndex ? "bg-[#7CE27E] text-white" : ""}`}
-          variant="outline"
-          size="sm"
-          key={i}
-          onClick={() => table.setPageIndex(i)}
-        >
-          {i + 1}
-        </Button>
+        <></>
+        // <Button
+        //   className={`ml-1 ${i === pageIndex ? "bg-[#7CE27E] text-white" : ""}`}
+        //   variant="outline"
+        //   size="sm"
+        //   key={i}
+        //   onClick={() => table.setPageIndex(i)}
+        // >
+        //   {i + 1}
+        // </Button>
       );
     }
   }
@@ -169,23 +165,23 @@ export function DataTable<TData, TValue>({
             {table.getFilteredRowModel().rows.length} entries.
           </div>
           <div className="flex items-center justify-end space-x-2 py-4">
-            <Button
+            {/* <Button
               variant="outline"
               size="sm"
               onClick={() => table.previousPage()}
               disabled={!table.getCanPreviousPage()}
             >
               Previous
-            </Button>
+            </Button> */}
             <div>{paginationButtons.map((element) => element)}</div>
-            <Button
+            {/* <Button
               variant="outline"
               size="sm"
               onClick={() => table.nextPage()}
               disabled={!table.getCanNextPage()}
             >
               Next
-            </Button>
+            </Button> */}
           </div>
         </div>
       </div>
