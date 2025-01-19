@@ -229,7 +229,7 @@ export default function Footer() {
               weekly.
             </p>
             <form
-              onSubmit={handleSubmit((e: any) => onSubmit(e))}
+              onSubmit={handleSubmit(onSubmit)}
               className="mt-6 sm:flex sm:max-w-md"
             >
               <label htmlFor="email-address" className="sr-only">
