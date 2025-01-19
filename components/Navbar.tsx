@@ -14,6 +14,7 @@ const navigation = [
   { name: "Home", href: "/", current: true },
   // { name: "List Token", href: "/list-token", current: false },
   { name: "API", href: "https://app.tokenkithq.io", current: false },
+  { name: "Package", href: "https://www.npmjs.com/package/starknet-tokenkit", current: false },
   // { name: "How It Works", href: "/about", current: false },
   { name: "Docs", href: "https://docs.tokenkithq.io", current: false },
 ];
