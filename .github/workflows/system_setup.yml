@@ -58,19 +58,7 @@ jobs:
             
 
             # Configure Nginx for the frontend
-            echo "server {
-                    listen 80;
-                    server_name tokenkithq.io www.tokenkithq.io;
-
-                    location / {
-                        proxy_pass http://localhost:3000;
-                        proxy_http_version 1.1;
-                        proxy_set_header Upgrade \$http_upgrade;
-                        proxy_set_header Connection 'upgrade';
-                        proxy_set_header Host \$host;
-                        proxy_cache_bypass \$http_upgrade;
-                    }
-                }" | sudo tee /etc/nginx/sites-available/tokenkithq.io
+            
 
             # Enable Nginx site and restart Nginx
             sudo rm -f /etc/nginx/sites-enabled/tokenkithq.io
