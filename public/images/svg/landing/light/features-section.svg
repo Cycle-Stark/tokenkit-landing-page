@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="featuresGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="currentColor" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="currentColor" stop-opacity="0.05" />
+    </linearGradient>
+    <filter id="featuresBlur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="20" />
+    </filter>
+  </defs>
+  
+  <!-- Decorative grid -->
+  <g opacity="0.2">
+    <path d="M0 150h800M0 300h800M0 450h800" stroke="currentColor" stroke-opacity="0.1" stroke-width="1"/>
+    <path d="M200 0v600M400 0v600M600 0v600" stroke="currentColor" stroke-opacity="0.1" stroke-width="1"/>
+  </g>
+  
+  <!-- Feature icons with connecting lines -->
+  <g opacity="0.8">
+    <!-- Center feature -->
+    <circle cx="400" cy="300" r="60" fill="url(#featuresGradient)" />
+    <circle cx="400" cy="300" r="60" stroke="currentColor" stroke-opacity="0.3" stroke-width="2" fill="none" />
+    
+    <!-- Surrounding features -->
+    <circle cx="200" cy="150" r="40" fill="url(#featuresGradient)" />
+    <circle cx="600" cy="150" r="40" fill="url(#featuresGradient)" />
+    <circle cx="200" cy="450" r="40" fill="url(#featuresGradient)" />
+    <circle cx="600" cy="450" r="40" fill="url(#featuresGradient)" />
+    
+    <!-- Connection lines -->
+    <path d="M400 300L200 150M400 300L600 150M400 300L200 450M400 300L600 450" 
+          stroke="currentColor" stroke-opacity="0.3" stroke-width="1.5" stroke-dasharray="5 5" />
+  </g>
+  
+  <!-- Feature icons -->
+  <g fill="currentColor" opacity="0.7">
+    <!-- API icon in center -->
+    <path d="M385 290L375 280L385 270L380 265L365 280L380 295L385 290Z" />
+    <path d="M415 290L425 280L415 270L420 265L435 280L420 295L415 290Z" />
+    <path d="M395 260L405 300L400 302L390 262L395 260Z" />
+    
+    <!-- Token icon top left -->
+    <circle cx="200" cy="150" r="20" fill="none" stroke="currentColor" stroke-opacity="0.7" stroke-width="2" />
+    <text x="200" y="155" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">$</text>
+    
+    <!-- Components icon top right -->
+    <rect x="585" y="135" width="30" height="30" rx="5" fill="none" stroke="currentColor" stroke-opacity="0.7" stroke-width="2" />
+    <path d="M590 150h20M600 140v20" stroke="currentColor" stroke-opacity="0.7" stroke-width="2" />
+    
+    <!-- Chart icon bottom left -->
+    <path d="M185 445h30M185 435h20M185 455h15" stroke="currentColor" stroke-opacity="0.7" stroke-width="2" />
+    
+    <!-- Notification icon bottom right -->
+    <path d="M600 440a15 15 0 0 0-15 15 15 15 0 0 0 15 15 15 15 0 0 0 15-15 15 15 0 0 0-15-15z" fill="none" stroke="currentColor" stroke-opacity="0.7" stroke-width="2" />
+    <path d="M600 465v5" stroke="currentColor" stroke-opacity="0.7" stroke-width="2" />
+    <circle cx="600" cy="435" r="2" fill="currentColor" />
+  </g>
+  
+  <!-- Subtle background glow -->
+  <circle cx="400" cy="300" r="200" fill="url(#featuresGradient)" filter="url(#featuresBlur)" opacity="0.2" />
+</svg>

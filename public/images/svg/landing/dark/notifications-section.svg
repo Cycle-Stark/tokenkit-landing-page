@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="notifGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="currentColor" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="currentColor" stop-opacity="0.1" />
+    </linearGradient>
+    <filter id="notifBlur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="25" />
+    </filter>
+  </defs>
+  
+  <!-- Notification bell with pulse animation -->
+  <g opacity="1.0">
+    <!-- Bell shape -->
+    <path d="M400 150 C400 150, 380 155, 380 180 L380 250 C380 280, 350 300, 350 300 L450 300 C450 300, 420 280, 420 250 L420 180 C420 155, 400 150, 400 150 Z" 
+          fill="url(#notifGradient)" stroke="currentColor" stroke-width="2" />
+    
+    <!-- Bell handle -->
+    <path d="M390 300 C390 310, 410 310, 410 300" stroke="currentColor" stroke-width="2" fill="none" />
+    
+    <!-- Bell clapper -->
+    <circle cx="400" cy="270" r="5" fill="currentColor" />
+    
+    <!-- Pulse rings -->
+    <circle cx="400" cy="200" r="80" stroke="currentColor" stroke-opacity="0.3" stroke-width="2" fill="none">
+      <animate attributeName="r" from="80" to="120" dur="2s" repeatCount="indefinite" />
+      <animate attributeName="stroke-opacity" from="0.3" to="0" dur="2s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="400" cy="200" r="60" stroke="currentColor" stroke-opacity="0.4" stroke-width="2" fill="none">
+      <animate attributeName="r" from="60" to="100" dur="2s" repeatCount="indefinite" begin="0.5s" />
+      <animate attributeName="stroke-opacity" from="0.4" to="0" dur="2s" repeatCount="indefinite" begin="0.5s" />
+    </circle>
+  </g>
+  
+  <!-- Notification cards -->
+  <g opacity="0.9">
+    <!-- Card 1 -->
+    <rect x="250" y="350" width="300" height="60" rx="10" fill="url(#notifGradient)" />
+    <rect x="250" y="350" width="300" height="60" rx="10" stroke="currentColor" stroke-opacity="0.5" stroke-width="1" fill="none" />
+    <circle cx="280" cy="380" r="15" fill="currentColor" fill-opacity="0.4" />
+    <path d="M290 350L290 410" stroke="currentColor" stroke-opacity="0.3" stroke-width="1" />
+    <path d="M310 365h220M310 380h180M310 395h200" stroke="currentColor" stroke-opacity="0.6" stroke-width="1" />
+    
+    <!-- Card 2 -->
+    <rect x="270" y="430" width="300" height="60" rx="10" fill="url(#notifGradient)" />
+    <rect x="270" y="430" width="300" height="60" rx="10" stroke="currentColor" stroke-opacity="0.5" stroke-width="1" fill="none" />
+    <circle cx="300" cy="460" r="15" fill="currentColor" fill-opacity="0.4" />
+    <path d="M310 430L310 490" stroke="currentColor" stroke-opacity="0.3" stroke-width="1" />
+    <path d="M330 445h220M330 460h180M330 475h200" stroke="currentColor" stroke-opacity="0.6" stroke-width="1" />
+    
+    <!-- Card 3 (partially visible) -->
+    <rect x="290" y="510" width="300" height="30" rx="10" fill="url(#notifGradient)" />
+    <rect x="290" y="510" width="300" height="30" rx="10" stroke="currentColor" stroke-opacity="0.5" stroke-width="1" fill="none" />
+    <circle cx="320" cy="525" r="10" fill="currentColor" fill-opacity="0.4" />
+    <path d="M330 510L330 540" stroke="currentColor" stroke-opacity="0.3" stroke-width="1" />
+    <path d="M350 525h220" stroke="currentColor" stroke-opacity="0.6" stroke-width="1" />
+  </g>
+  
+  <!-- Connection lines from bell to cards -->
+  <path d="M400 300L350 350M400 300L400 350M400 300L450 350" 
+        stroke="currentColor" stroke-opacity="0.4" stroke-width="1.5" stroke-dasharray="5 5" />
+  
+  <!-- Real-time data points -->
+  <g opacity="0.8">
+    <circle cx="150" cy="200" r="5" fill="currentColor">
+      <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="200" cy="250" r="5" fill="currentColor">
+      <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" begin="0.3s" />
+    </circle>
+    <circle cx="150" cy="300" r="5" fill="currentColor">
+      <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" begin="0.6s" />
+    </circle>
+    <circle cx="200" cy="350" r="5" fill="currentColor">
+      <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" begin="0.9s" />
+    </circle>
+    <circle cx="150" cy="400" r="5" fill="currentColor">
+      <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" begin="1.2s" />
+    </circle>
+    
+    <circle cx="650" cy="200" r="5" fill="currentColor">
+      <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" begin="0.2s" />
+    </circle>
+    <circle cx="600" cy="250" r="5" fill="currentColor">
+      <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" begin="0.5s" />
+    </circle>
+    <circle cx="650" cy="300" r="5" fill="currentColor">
+      <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" begin="0.8s" />
+    </circle>
+    <circle cx="600" cy="350" r="5" fill="currentColor">
+      <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" begin="1.1s" />
+    </circle>
+    <circle cx="650" cy="400" r="5" fill="currentColor">
+      <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" begin="1.4s" />
+    </circle>
+  </g>
+  
+  <!-- Subtle background glow -->
+  <circle cx="400" cy="300" r="200" fill="url(#notifGradient)" filter="url(#notifBlur)" opacity="0.3" />
+</svg>

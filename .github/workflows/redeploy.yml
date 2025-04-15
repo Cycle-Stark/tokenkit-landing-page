@@ -1,0 +1,50 @@
+name: Tokenkit Frontend Redeploy
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install SSH Client
+        run: sudo apt-get install -y sshpass
+
+      - name: Transfer files to Contabo
+        uses: appleboy/scp-action@v0.1.6
+        with:
+          host: ${{ secrets.CONTABO_HOST }}
+          username: root
+          key: ${{ secrets.CONTABO_SSH_KEY }}
+          source: "."
+          target: "/home/tokenkit_app_frontend/"
+
+      - name: Redeploy Application
+        env:
+          VPS_PASSWORD: ${{ secrets.CONTABO_PASSWORD }}
+        run: |
+          sshpass -p "$VPS_PASSWORD" ssh -o StrictHostKeyChecking=no root@${{ secrets.CONTABO_HOST }} << 'EOF'
+            # Set environment variables
+            export FRONTEND_IDENTIFIER="tokenkit_app_frontend"
+            export PM2_APP_NAME="tokenkit_app_frontend"
+            
+            # Navigate to the frontend directory
+            cd /home/"$FRONTEND_IDENTIFIER" || exit
+            
+            echo "Installing/updating dependencies..."
+            pnpm i
+            
+            echo "Building application..."
+            pnpm run build
+            
+            echo "Restarting PM2 process..."
+            /root/.nvm/versions/node/v22.14.0/bin/pm2 restart "$PM2_APP_NAME"
+            sudo systemctl reload caddy
+          EOF

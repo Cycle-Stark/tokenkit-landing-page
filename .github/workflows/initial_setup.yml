@@ -1,0 +1,71 @@
+name: Initial Setup
+
+on:
+  workflow_dispatch:
+
+jobs:
+  github_pages_predeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'  
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build documentation
+        run: pnpm run build
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install SSH Client
+        run: sudo apt-get install -y sshpass
+
+      - name: Transfer files to Contabo
+        uses: appleboy/scp-action@v0.1.6
+        with:
+          host: ${{ env.CONTABO_IP }}
+          username: root
+          key: ${{ env.CONTABO_SSH_KEY }}
+          source: "."
+          target: "/home/tokenkit_app_frontend/"
+        env:
+          CONTABO_IP: ${{ secrets.CONTABO_HOST }}
+          CONTABO_SSH_KEY: ${{ secrets.CONTABO_SSH_KEY }}
+
+      - name: Setup Frontend
+        env:
+          VPS_PASSWORD: ${{ secrets.CONTABO_PASSWORD }}
+        run: |
+          sshpass -p "$VPS_PASSWORD" ssh -o StrictHostKeyChecking=no ${{ secrets.CONTABO_USER }}@${{ secrets.CONTABO_HOST }} << 'EOF'
+            export FRONTEND_IDENTIFIER="tokenkit_app_frontend"
+            export PM2_APP_NAME="tokenkit_app_frontend"
+
+            # Navigate to indexer frontend directory
+            cd "/home/tokenkit_app_frontend/"
+            
+            # Install pnpm if not available
+            if ! command -v pnpm &> /dev/null; then
+              npm install -g pnpm
+            fi
+
+            pnpm i
+            pnpm run build
+            /root/.nvm/versions/node/v22.14.0/bin/pm2 start "pnpm run start" --name "$PM2_APP_NAME"
+
+            exit 0  # Exit from SSH session
+          EOF

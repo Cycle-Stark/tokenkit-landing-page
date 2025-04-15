@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="tokenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="currentColor" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="currentColor" stop-opacity="0.05" />
+    </linearGradient>
+    <filter id="tokenBlur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="25" />
+    </filter>
+  </defs>
+  
+  <!-- Token grid background -->
+  <g opacity="0.2">
+    <rect x="150" y="150" width="500" height="300" rx="20" fill="none" stroke="currentColor" stroke-width="2" />
+    <path d="M150 200h500M150 250h500M150 300h500M150 350h500M150 400h500" stroke="currentColor" stroke-opacity="0.2" stroke-width="1"/>
+    <path d="M200 150v300M250 150v300M300 150v300M350 150v300M400 150v300M450 150v300M500 150v300M550 150v300M600 150v300" stroke="currentColor" stroke-opacity="0.2" stroke-width="1"/>
+  </g>
+  
+  <!-- Token icons -->
+  <g opacity="0.8">
+    <!-- Row 1 -->
+    <circle cx="200" cy="175" r="15" fill="url(#tokenGradient)" />
+    <circle cx="250" cy="175" r="15" fill="url(#tokenGradient)" />
+    <circle cx="300" cy="175" r="15" fill="url(#tokenGradient)" />
+    <circle cx="350" cy="175" r="15" fill="url(#tokenGradient)" />
+    <circle cx="400" cy="175" r="15" fill="url(#tokenGradient)" />
+    <circle cx="450" cy="175" r="15" fill="url(#tokenGradient)" />
+    <circle cx="500" cy="175" r="15" fill="url(#tokenGradient)" />
+    <circle cx="550" cy="175" r="15" fill="url(#tokenGradient)" />
+    <circle cx="600" cy="175" r="15" fill="url(#tokenGradient)" />
+    
+    <!-- Row 2 -->
+    <circle cx="200" cy="225" r="15" fill="url(#tokenGradient)" />
+    <circle cx="300" cy="225" r="15" fill="url(#tokenGradient)" />
+    <circle cx="400" cy="225" r="15" fill="url(#tokenGradient)" />
+    <circle cx="500" cy="225" r="15" fill="url(#tokenGradient)" />
+    <circle cx="600" cy="225" r="15" fill="url(#tokenGradient)" />
+    
+    <!-- Row 3 -->
+    <circle cx="200" cy="275" r="15" fill="url(#tokenGradient)" />
+    <circle cx="250" cy="275" r="15" fill="url(#tokenGradient)" />
+    <circle cx="350" cy="275" r="15" fill="url(#tokenGradient)" />
+    <circle cx="450" cy="275" r="15" fill="url(#tokenGradient)" />
+    <circle cx="550" cy="275" r="15" fill="url(#tokenGradient)" />
+    <circle cx="600" cy="275" r="15" fill="url(#tokenGradient)" />
+    
+    <!-- Row 4 -->
+    <circle cx="200" cy="325" r="15" fill="url(#tokenGradient)" />
+    <circle cx="300" cy="325" r="15" fill="url(#tokenGradient)" />
+    <circle cx="400" cy="325" r="15" fill="url(#tokenGradient)" />
+    <circle cx="500" cy="325" r="15" fill="url(#tokenGradient)" />
+    <circle cx="600" cy="325" r="15" fill="url(#tokenGradient)" />
+    
+    <!-- Row 5 -->
+    <circle cx="200" cy="375" r="15" fill="url(#tokenGradient)" />
+    <circle cx="250" cy="375" r="15" fill="url(#tokenGradient)" />
+    <circle cx="300" cy="375" r="15" fill="url(#tokenGradient)" />
+    <circle cx="350" cy="375" r="15" fill="url(#tokenGradient)" />
+    <circle cx="400" cy="375" r="15" fill="url(#tokenGradient)" />
+    <circle cx="450" cy="375" r="15" fill="url(#tokenGradient)" />
+    <circle cx="500" cy="375" r="15" fill="url(#tokenGradient)" />
+    <circle cx="550" cy="375" r="15" fill="url(#tokenGradient)" />
+    <circle cx="600" cy="375" r="15" fill="url(#tokenGradient)" />
+  </g>
+  
+  <!-- Token symbols -->
+  <g fill="currentColor" opacity="0.8" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle">
+    <text x="200" y="179">BTC</text>
+    <text x="250" y="179">ETH</text>
+    <text x="300" y="179">SOL</text>
+    <text x="350" y="179">AVAX</text>
+    <text x="400" y="179">MATIC</text>
+    <text x="450" y="179">DOT</text>
+    <text x="500" y="179">LINK</text>
+    <text x="550" y="179">UNI</text>
+    <text x="600" y="179">AAVE</text>
+    
+    <text x="200" y="229">COMP</text>
+    <text x="300" y="229">SNX</text>
+    <text x="400" y="229">MKR</text>
+    <text x="500" y="229">YFI</text>
+    <text x="600" y="229">CRV</text>
+    
+    <text x="200" y="279">BAL</text>
+    <text x="250" y="279">1INCH</text>
+    <text x="350" y="279">SUSHI</text>
+    <text x="450" y="279">GRT</text>
+    <text x="550" y="279">LRC</text>
+    <text x="600" y="279">REN</text>
+    
+    <text x="200" y="329">KNC</text>
+    <text x="300" y="329">ZRX</text>
+    <text x="400" y="329">ALPHA</text>
+    <text x="500" y="329">PERP</text>
+    <text x="600" y="329">DYDX</text>
+    
+    <text x="200" y="379">ENS</text>
+    <text x="250" y="379">APE</text>
+    <text x="300" y="379">SAND</text>
+    <text x="350" y="379">MANA</text>
+    <text x="400" y="379">AXS</text>
+    <text x="450" y="379">ILV</text>
+    <text x="500" y="379">GALA</text>
+    <text x="550" y="379">AUDIO</text>
+    <text x="600" y="379">RARE</text>
+  </g>
+  
+  <!-- Management tools -->
+  <g opacity="0.7">
+    <rect x="300" y="450" width="200" height="50" rx="10" fill="url(#tokenGradient)" />
+    <rect x="300" y="450" width="200" height="50" rx="10" stroke="currentColor" stroke-opacity="0.4" stroke-width="2" fill="none" />
+    <text x="400" y="480" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="currentColor">Token Management</text>
+    
+    <!-- Connection lines from management to tokens -->
+    <path d="M400 450L200 375M400 450L300 375M400 450L400 375M400 450L500 375M400 450L600 375" 
+          stroke="currentColor" stroke-opacity="0.3" stroke-width="1.5" stroke-dasharray="5 5" />
+  </g>
+  
+  <!-- Subtle background glow -->
+  <circle cx="400" cy="300" r="200" fill="url(#tokenGradient)" filter="url(#tokenBlur)" opacity="0.2" />
+</svg>

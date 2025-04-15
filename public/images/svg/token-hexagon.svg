@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M100 10L173.2 50V130L100 170L26.8 130V50L100 10Z" stroke="currentColor" stroke-opacity="0.15" stroke-width="2" fill="none"/>
+  <path d="M100 40L146.4 65V115L100 140L53.6 115V65L100 40Z" stroke="currentColor" stroke-opacity="0.1" stroke-width="1.5" fill="none"/>
+  <path d="M100 70L120 80V100L100 110L80 100V80L100 70Z" stroke="currentColor" stroke-opacity="0.2" stroke-width="1" fill="none"/>
+  <circle cx="100" cy="100" r="5" fill="currentColor" fill-opacity="0.2"/>
+</svg>

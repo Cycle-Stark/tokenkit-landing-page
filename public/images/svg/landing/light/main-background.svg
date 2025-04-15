@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1440" height="800" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="currentColor" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="currentColor" stop-opacity="0.2" />
+    </linearGradient>
+    <linearGradient id="gradient2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="currentColor" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="currentColor" stop-opacity="0.05" />
+    </linearGradient>
+    <filter id="blur1" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="60" />
+    </filter>
+    <filter id="blur2" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="40" />
+    </filter>
+  </defs>
+  
+  <!-- Background grid pattern -->
+  <g opacity="0.3">
+    <path d="M0 0h1440v800H0z" fill="none"/>
+    <path d="M0 100h1440M0 200h1440M0 300h1440M0 400h1440M0 500h1440M0 600h1440M0 700h1440" stroke="currentColor" stroke-opacity="0.1" stroke-width="1"/>
+    <path d="M100 0v800M200 0v800M300 0v800M400 0v800M500 0v800M600 0v800M700 0v800M800 0v800M900 0v800M1000 0v800M1100 0v800M1200 0v800M1300 0v800M1400 0v800" stroke="currentColor" stroke-opacity="0.1" stroke-width="1"/>
+  </g>
+  
+  <!-- Blurred shapes -->
+  <circle cx="200" cy="200" r="300" fill="url(#gradient1)" filter="url(#blur1)" opacity="0.6"/>
+  <circle cx="1200" cy="600" r="250" fill="url(#gradient2)" filter="url(#blur1)" opacity="0.5"/>
+  
+  <!-- Hexagon pattern -->
+  <g opacity="0.2">
+    <path d="M100 150L150 175V225L100 250L50 225V175L100 150Z" stroke="currentColor" stroke-opacity="0.3" stroke-width="2" fill="none"/>
+    <path d="M300 250L350 275V325L300 350L250 325V275L300 250Z" stroke="currentColor" stroke-opacity="0.3" stroke-width="2" fill="none"/>
+    <path d="M500 150L550 175V225L500 250L450 225V175L500 150Z" stroke="currentColor" stroke-opacity="0.3" stroke-width="2" fill="none"/>
+    <path d="M700 250L750 275V325L700 350L650 325V275L700 250Z" stroke="currentColor" stroke-opacity="0.3" stroke-width="2" fill="none"/>
+    <path d="M900 150L950 175V225L900 250L850 225V175L900 150Z" stroke="currentColor" stroke-opacity="0.3" stroke-width="2" fill="none"/>
+    <path d="M1100 250L1150 275V325L1100 350L1050 325V275L1100 250Z" stroke="currentColor" stroke-opacity="0.3" stroke-width="2" fill="none"/>
+    <path d="M1300 150L1350 175V225L1300 250L1250 225V175L1300 150Z" stroke="currentColor" stroke-opacity="0.3" stroke-width="2" fill="none"/>
+    
+    <path d="M100 450L150 475V525L100 550L50 525V475L100 450Z" stroke="currentColor" stroke-opacity="0.3" stroke-width="2" fill="none"/>
+    <path d="M300 550L350 575V625L300 650L250 625V575L300 550Z" stroke="currentColor" stroke-opacity="0.3" stroke-width="2" fill="none"/>
+    <path d="M500 450L550 475V525L500 550L450 525V475L500 450Z" stroke="currentColor" stroke-opacity="0.3" stroke-width="2" fill="none"/>
+    <path d="M700 550L750 575V625L700 650L650 625V575L700 550Z" stroke="currentColor" stroke-opacity="0.3" stroke-width="2" fill="none"/>
+    <path d="M900 450L950 475V525L900 550L850 525V475L900 450Z" stroke="currentColor" stroke-opacity="0.3" stroke-width="2" fill="none"/>
+    <path d="M1100 550L1150 575V625L1100 650L1050 625V575L1100 550Z" stroke="currentColor" stroke-opacity="0.3" stroke-width="2" fill="none"/>
+    <path d="M1300 450L1350 475V525L1300 550L1250 525V475L1300 450Z" stroke="currentColor" stroke-opacity="0.3" stroke-width="2" fill="none"/>
+  </g>
+  
+  <!-- Blockchain nodes -->
+  <g opacity="0.4">
+    <circle cx="200" cy="200" r="5" fill="currentColor"/>
+    <circle cx="500" cy="300" r="5" fill="currentColor"/>
+    <circle cx="800" cy="200" r="5" fill="currentColor"/>
+    <circle cx="1100" cy="300" r="5" fill="currentColor"/>
+    <circle cx="200" cy="500" r="5" fill="currentColor"/>
+    <circle cx="500" cy="600" r="5" fill="currentColor"/>
+    <circle cx="800" cy="500" r="5" fill="currentColor"/>
+    <circle cx="1100" cy="600" r="5" fill="currentColor"/>
+    
+    <path d="M200 200L500 300M500 300L800 200M800 200L1100 300M200 500L500 600M500 600L800 500M800 500L1100 600M200 200L200 500M500 300L500 600M800 200L800 500M1100 300L1100 600" stroke="currentColor" stroke-opacity="0.2" stroke-width="1"/>
+  </g>
+</svg>
