@@ -10,7 +10,6 @@ import Image from '@tiptap/extension-image'
 import Youtube from '@tiptap/extension-youtube'
 import { Box, ScrollArea, useMantineColorScheme, useMantineTheme } from '@mantine/core';
 import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight';
-import Code from '@tiptap/extension-code';
 import { createLowlight, all } from 'lowlight';
 import Placeholder from '@tiptap/extension-placeholder';
 import { CodeBlockControl, ImageControl, YoutubeControl } from './utils';
@@ -50,7 +49,7 @@ function CustomRTE(props: ICustomRTE) {
                 defaultLanguage: 'plaintext'
 
             }),
-            Code,
+            // Code,
             Placeholder.configure({
                 placeholder: "Write something here..."
             })
