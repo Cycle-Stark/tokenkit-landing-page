@@ -15,18 +15,17 @@ import { ReactSVG } from "react-svg";
 
 const SpiralImages = () => {
   const images = [
-    "https://cryptologos.cc/logos/starknet-token-strk-logo.png?v=040",
-    "https://cryptologos.cc/logos/usd-coin-usdc-logo.png?v=040",
-    "https://cryptologos.cc/logos/ethereum-eth-logo.png?v=040",
-    "https://cryptologos.cc/logos/tether-usdt-logo.png?v=040",
-    "https://cryptologos.cc/logos/starknet-token-strk-logo.png?v=040",
-    "https://cryptologos.cc/logos/multi-collateral-dai-dai-logo.png?v=040",
-    "https://s2.coinmarketcap.com/static/img/coins/64x64/33912.png",
-    "https://s2.coinmarketcap.com/static/img/coins/64x64/17445.png",
-    "https://cryptologos.cc/logos/starknet-token-strk-logo.png?v=040",
-    "https://assets.coingecko.com/coins/images/37715/standard/135474885.png?1715330450",
-    "https://s2.coinmarketcap.com/static/img/coins/64x64/18990.png",
-    "https://cryptologos.cc/logos/bitcoin-btc-logo.png?v=040"
+    "/static/starknet-token-strk-logo.png",
+    "/static/usd-coin-usdc-logo.png",
+    "/static/ethereum-eth-logo.png",
+    "/static/tether-usdt-logo.png",
+    "/static/multi-collateral-dai-dai-logo.png",
+    "/static/33912.png",
+    "/static/17445.png",
+    "/static/starknet-token-strk-logo.png",
+    "/static/starknet-token-strk-logo.png",
+    "/static/18990.png",
+    "/static/bitcoin-btc-logo.png"
   ];
 
   const [positions, setPositions] = useState<any>([
