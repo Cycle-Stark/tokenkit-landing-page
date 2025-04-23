@@ -64,7 +64,7 @@
     "react-fast-marquee": "^1.6.5",
     "react-svg": "^16.3.0",
     "starknet": "6.9.0",
-    "starknet-tokenkit": "/home/dalmas/E/blockchain/starknet/projects/tokenkit/v2/tokenkit-package/starknet-tokenkit-v0.0.1-19.tgz",
+    "starknet-tokenkit": "^3.0.0",
     "starknetkit": "1.1.9",
     "styled-components": "^6.1.15",
     "swr": "^2.3.3",
