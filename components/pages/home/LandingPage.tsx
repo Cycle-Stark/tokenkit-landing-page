@@ -332,14 +332,14 @@ const TokenSelectionComponent = () => {
           </SimpleGrid>
         </Stack>
       </Grid.Col>
-      <Grid.Col span={{ md: 6 }}>
+      <Grid.Col span={{ md: 6 }}> 
         <TokenKitWrapper
           network="SN_SEPOLIA"
           mainnetAPIKey="saWsCXrZ.clM7UA9l0VMui6dYInUWlVXCYTo5428e"
           sepoliaAPIKey={'EeRumkN0.GbgE6z0Kfqq9U2RR8kIr91f1YfNLxJku'}
           themeObject={currentTheme}
-          protocol='http'
-          endpoint={"localhost:8000"}
+          protocol={process.env.NEXT_PUBLIC_API_PROTOCOL as "https" | "http"}
+          endpoint={process.env.NEXT_PUBLIC_API_ENDPOINT as string}
         >
           <Stack align="center">
 
