@@ -20,12 +20,6 @@ jobs:
         with:
           version: 8
 
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Build documentation
-        run: pnpm run build
-
   deploy:
     runs-on: ubuntu-latest
     steps:
@@ -42,7 +36,7 @@ jobs:
           username: root
           key: ${{ env.CONTABO_SSH_KEY }}
           source: "."
-          target: "/home/tokenkit_app_frontend/"
+          target: "/home/tokenkit_frontend/"
         env:
           CONTABO_IP: ${{ secrets.CONTABO_HOST }}
           CONTABO_SSH_KEY: ${{ secrets.CONTABO_SSH_KEY }}
@@ -52,11 +46,9 @@ jobs:
           VPS_PASSWORD: ${{ secrets.CONTABO_PASSWORD }}
         run: |
           sshpass -p "$VPS_PASSWORD" ssh -o StrictHostKeyChecking=no ${{ secrets.CONTABO_USER }}@${{ secrets.CONTABO_HOST }} << 'EOF'
-            export FRONTEND_IDENTIFIER="tokenkit_app_frontend"
-            export PM2_APP_NAME="tokenkit_app_frontend"
 
             # Navigate to indexer frontend directory
-            cd "/home/tokenkit_app_frontend/"
+            cd /home/tokenkit_frontend
             
             # Install pnpm if not available
             if ! command -v pnpm &> /dev/null; then
@@ -65,7 +57,7 @@ jobs:
 
             pnpm i
             pnpm run build
-            /root/.nvm/versions/node/v22.14.0/bin/pm2 start "pnpm run start" --name "$PM2_APP_NAME"
+            /root/.nvm/versions/node/v22.14.0/bin/pm2 start "pnpm run start" --name tokenkit_frontend
 
             exit 0  # Exit from SSH session
           EOF

@@ -24,19 +24,15 @@ jobs:
           username: root
           key: ${{ secrets.CONTABO_SSH_KEY }}
           source: "."
-          target: "/home/tokenkit_app_frontend/"
+          target: "/home/tokenkit_frontend/"
 
       - name: Redeploy Application
         env:
           VPS_PASSWORD: ${{ secrets.CONTABO_PASSWORD }}
         run: |
           sshpass -p "$VPS_PASSWORD" ssh -o StrictHostKeyChecking=no root@${{ secrets.CONTABO_HOST }} << 'EOF'
-            # Set environment variables
-            export FRONTEND_IDENTIFIER="tokenkit_app_frontend"
-            export PM2_APP_NAME="tokenkit_app_frontend"
-            
             # Navigate to the frontend directory
-            cd /home/"$FRONTEND_IDENTIFIER" || exit
+            cd /home/tokenkit_frontend || exit
             
             echo "Installing/updating dependencies..."
             pnpm i
@@ -45,6 +41,6 @@ jobs:
             pnpm run build
             
             echo "Restarting PM2 process..."
-            /root/.nvm/versions/node/v22.14.0/bin/pm2 restart "$PM2_APP_NAME"
+            /root/.nvm/versions/node/v22.14.0/bin/pm2 restart tokenkit_frontend
             sudo systemctl reload caddy
           EOF
