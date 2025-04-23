@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "analyze": "ANALYZE=true next build",
-    "start": "next start",
+    "start": "PORT=3000 next start",
     "export": "next build && next export",
     "typecheck": "tsc --noEmit",
     "lint": "npm run eslint && npm run stylelint",
