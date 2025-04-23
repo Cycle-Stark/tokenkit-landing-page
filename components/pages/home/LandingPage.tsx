@@ -325,7 +325,7 @@ const TokenSelectionComponent = () => {
                 <ThemeCard key={`theme_${theme.accessor}`}
                   theme={themes[theme.accessor]}
                   title={theme.title} setCurrentTheme={setCurrentTheme}
-                  activeTheme={currentTheme}
+                  activeTheme={{...currentTheme, fonts: {fontFamily: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji"}}}
                 />
               ))
             }
