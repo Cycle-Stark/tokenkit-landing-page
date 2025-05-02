@@ -535,7 +535,7 @@ function LandingPage({ blogs }: ILandingPage) {
                   <Stack mih={"400px"} justify="center" h={'100%'}>
                     <Title order={2} fw={400} size={"32px"}>Create & Manage Tokens with Ease</Title>
                     <Text size="md">
-                      TokenKit simplifies the creation of both Fungible and Non-Fungible tokens (NFTs) with our intuitive interfaces and APIs. Launch your own tokens on StarkNet with minimal technical knowledge and maximum flexibility. Access detailed documentation and support for all token creation processes.
+                      Tokenkit simplifies the creation of both Fungible and Non-Fungible tokens (NFTs) with our intuitive interfaces and APIs. Launch your own tokens on Starknet with minimal technical knowledge and maximum flexibility. Access detailed documentation and support for all token creation processes.
                     </Text>
                     <List spacing={"sm"}>
                       <List.Item icon={<IconCoins stroke={em(1.5)} />}>
@@ -560,13 +560,13 @@ function LandingPage({ blogs }: ILandingPage) {
           <Grid>
             <Grid.Col span={{ md: 5 }}>
               <Title order={2} fw={400} size={"32px"}>
-                Simplify Liquidity Pool Management with TokenKit's Robust API
+                Simplify Liquidity Pool Management with Tokenkit's Robust API
               </Title>
             </Grid.Col>
             <Grid.Col span={{ md: 7 }}>
               <Stack justify="center">
                 <Text size="md">
-                  Tokenkit's API streamlines the complexities of managing liquidity pools for decentralized exchanges. Our tools ensure optimal performance, real-time updates, and enhanced user engagement, making liquidity management more efficient and accessible for developers on StarkNet.
+                  Tokenkit's API streamlines the complexities of managing liquidity pools for decentralized exchanges. Our tools ensure optimal performance, real-time updates, and enhanced user engagement, making liquidity management more efficient and accessible for developers on Starknet.
                 </Text>
                 <SimpleGrid cols={2}>
                   <SimpleCard title="Real-Time" description="Access up-to-the-minute data on liquidity pool performance and activity." />
@@ -583,7 +583,7 @@ function LandingPage({ blogs }: ILandingPage) {
               <Stack mih={"400px"} justify="center">
                 <Title order={2} fw={400} size={"32px"}>Real-Time Notifications for Asset Activities and Event Tracking</Title>
                 <Text size="md">
-                  Stay informed with our advanced notification system. Get real-time alerts on asset activities, ensuring you’re always ahead of market changes and critical events within your StarkNet dApps.
+                  Stay informed with our advanced notification system. Get real-time alerts on asset activities, ensuring you’re always ahead of market changes and critical events within your Starknet dApps.
                 </Text>
                 <SimpleGrid cols={2}>
                   <SimpleCard title="100%" description="Real-time alert delivery success rate." />
