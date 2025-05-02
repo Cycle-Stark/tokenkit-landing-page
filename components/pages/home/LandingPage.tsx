@@ -129,18 +129,6 @@ function ProjectTimeline() {
   const strokeSize = 1.5
   const tokenkitTimeline: ITimeline[] = [
     {
-      title: "API for Assets on Starknet",
-      icon: <IconApi size={iconSize} stroke={em(strokeSize)} />,
-      description: "Unified access to token balances, transfers, and metadata",
-      date: "2024 Q2"
-    },
-    {
-      title: "Token Selection UI",
-      icon: <IconComponents size={iconSize} stroke={em(strokeSize)} />,
-      description: "Prebuilt component for seamless token integration in dApps",
-      date: "2024 Q3"
-    },
-    {
       date: 'Q1 2024',
       title: 'Tokenkit Development Kickoff',
       description: 'Started development of Tokenkit, focusing on core token management.',
@@ -160,28 +148,52 @@ function ProjectTimeline() {
     },
     {
       date: 'Q2 2024',
+      title: 'API for Assets on Starknet',
+      icon: <IconApi size={iconSize} stroke={em(strokeSize)} />,
+      description: 'Unified access to token balances, transfers, and metadata',
+    },
+    {
+      date: 'Q2 2024',
       title: 'API & SDK Release',
       description: 'Public API and SDK for seamless integration with dApps.',
       icon: <IconApi size={iconSize} stroke={em(strokeSize)} />,
     },
     {
-      date: 'Q3 2024',
-      title: 'AI-Powered Notifications',
-      description: 'Intelligent real-time alerts for token transfers and balance changes.',
+      date: 'Q2 2024',
+      title: 'Token Selection UI',
+      icon: <IconComponents size={iconSize} stroke={em(strokeSize)} />,
+      description: 'Prebuilt component for seamless token integration in dApps',
+    },
+    {
+      date: 'Q1 2025',
+      title: 'Tokenkit Release v2.0',
+      icon: <IconComponents size={iconSize} stroke={em(strokeSize)} />,
+      description: 'Release of Tokenkit v2.0 with new features and improvements.',
+    },
+    {
+      date: 'Q2 2025',
+      title: 'Real-Time Notifications',
+      description: 'Telegram and email notifications for token transfers and important events.',
       icon: <IconBell size={iconSize} stroke={em(strokeSize)} />,
     },
     {
-      date: 'Q4 2024',
+      date: 'Q3 2025',
+      title: 'AI-Powered Notifications',
+      description: 'Intelligent real-time alerts with customizable triggers and smart filtering.',
+      icon: <IconBell size={iconSize} stroke={em(strokeSize)} />,
+    },
+    {
+      date: 'Q4 2025',
       title: 'Advanced Analytics Dashboard',
       description: 'Customizable monitoring for asset performance and liquidity pools.',
       icon: <IconChartBar size={iconSize} stroke={em(strokeSize)} />,
     },
-    {
-      date: 'Q1 2025',
-      title: 'Multi-Chain Support',
-      description: 'Expanded compatibility across EVM and non-EVM networks.',
-      icon: <IconLayersIntersect size={iconSize} stroke={em(strokeSize)} />,
-    },
+    // {
+    //   date: 'Q1 2026',
+    //   title: 'Multi-Chain Support',
+    //   description: 'Expanded compatibility across EVM and non-EVM networks.',
+    //   icon: <IconLayersIntersect size={iconSize} stroke={em(strokeSize)} />,
+    // },
     {
       date: 'Q2 2025',
       title: 'On-Chain Token Discovery',
@@ -211,9 +223,10 @@ function ProjectTimeline() {
       </Text>
 
       <Timeline
-        active={1}
+        active={6}
         bulletSize={24}
         lineWidth={2}
+        color="green"
         align="left"
         styles={{
           // itemBullet: { backgroundColor: theme.colors.blue[6] },
@@ -227,7 +240,7 @@ function ProjectTimeline() {
             bullet={item.icon}
           // lineVariant={index % 2 === 0 ? 'dashed' : 'solid'}
           >
-            <Text color="dimmed" size="sm">
+            <Text c="dimmed" size="sm">
               {item.description}
             </Text>
             <Text size="xs" mt={4}>
