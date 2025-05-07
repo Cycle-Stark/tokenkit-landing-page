@@ -50,7 +50,7 @@ const CustomDrawerLink = (props: CustomDrawerLinkProps) => {
 
 const navlinks: CustomDrawerLinkProps[] = [
     { label: 'Home', href: '/', icon: <IconHome2 /> },
-    { label: 'Launch Token', href: '/launch-token', icon: <IconPhone /> },
+    // { label: 'Launch Token', href: '/launch-token', icon: <IconPhone /> },
     { label: 'List Token', href: '/list-token', icon: <IconBriefcase /> },
     {
         label: 'Tokens', href: '#',
