@@ -73,6 +73,7 @@ const navlinks: CustomDrawerLinkProps[] = [
         ]
     },
     { label: 'Articles', href: '/articles', icon: <IconPlant2 /> },
+    { label: 'Contract Deployer', href: process.env.NEXT_PUBLIC_CONTRACT_DEPLOYER_URL ?? "#", icon: <IconInfoCircle />, isExternal: true },
     // { label: 'Admin', href: '/ad', icon: <IconHome2 /> },
 ]
 
