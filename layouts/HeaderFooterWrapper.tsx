@@ -11,7 +11,7 @@ import CustomFooter from '@/components/common/CustomFooter'
 import { useAppContext } from '@/providers/AppProvider'
 import { matchTest, isDarkMode } from '@/utils/functions'
 import ColorSchemeToggle from '@/components/ColorSchemeToggle/ColorSchemeToggle'
-import { APP_NAME } from '@/utils/constants'
+import { API_DOCUMENTATION, APP_NAME, CONTRACT_DEPLOYER_URL, SDK_DOCUMENTATION, SDK_URL } from '@/utils/constants'
 import { CustomDrawerLinkProps } from '@/utils/types'
 
 
@@ -62,18 +62,19 @@ const navlinks: CustomDrawerLinkProps[] = [
             // { label: 'Non-Fungible Tokens (NFTs)', href: '/tokens/all-tokens', icon: <IconPhone /> },
         ]
     },
-    { label: 'SDK', href: process.env.NEXT_PUBLIC_SDK_URL ?? "#", icon: <IconInfoCircle />, isExternal: true },
     { label: 'API', href: process.env.NEXT_PUBLIC_API_URL ?? "#", icon: <IconInfoCircle />, isExternal: true },
     {
-        label: 'Documentation', href: '#',
+        label: 'Resources & Apps', href: '#',
         icon: <IconPlant2 />,
         children: [
-            { label: 'SDK Documentation', href: process.env.NEXT_PUBLIC_SDK_DOCUMENTATION ?? "#", icon: <IconPhone />, isExternal: true },
-            { label: 'API Documentation', href: process.env.NEXT_PUBLIC_API_DOCUMENTATION ?? "#", icon: <IconPhone />, isExternal: true },
+            { label: 'SDK Documentation', href: SDK_DOCUMENTATION ?? "#", icon: <IconPhone />, isExternal: true },
+            { label: 'API Documentation', href: API_DOCUMENTATION ?? "#", icon: <IconPhone />, isExternal: true },
+            { label: 'Contract Deployer', href: CONTRACT_DEPLOYER_URL ?? "#", icon: <IconInfoCircle />, isExternal: true },
+            { label: 'SDK', href: SDK_URL ?? "#", icon: <IconInfoCircle />, isExternal: true },
         ]
     },
     { label: 'Articles', href: '/articles', icon: <IconPlant2 /> },
-    // { label: 'Admin', href: '/ad', icon: <IconHome2 /> },
+    { label: 'Contact Us', href: '/contact-us', icon: <IconPhone /> },
 ]
 
 
@@ -159,7 +160,7 @@ const HeaderAndFooterWrapper = ({ children }: NavbarAndFooterWrapperProps) => {
                 WebkitBackdropFilter: 'blur(5px)',
             }} w={"100vw"}>
                 <Container size={'xl'} className='h-100'>
-                    <Group justify='space-between' className='h-100' align='center'>
+                    <Group justify='space-between' className='h-100' align='center' wrap='nowrap'>
                         <Group className='h-100' align='center'>
                             <Burger
                                 opened={opened}
@@ -174,12 +175,12 @@ const HeaderAndFooterWrapper = ({ children }: NavbarAndFooterWrapperProps) => {
                             {/* <Image src={"/assets/images/icons/logo.png"} mah={'100%'} /> */}
                         </Group>
 
-                        <Group align='center' visibleFrom='md'>
-                            {navlinks.map((link: CustomDrawerLinkProps, i: number) => (
-                                <HeaderLink key={`header_link_${i}`} {...link} />
-                            ))}
-                        </Group>
-                        <Group gap={4}>
+                        <Group gap={"xs"}>
+                            <Group align='center' gap={"xs"} visibleFrom='md'>
+                                {navlinks.map((link: CustomDrawerLinkProps, i: number) => (
+                                    <HeaderLink key={`header_link_${i}`} {...link} />
+                                ))}
+                            </Group>
                             {/* <AccountBtn /> */}
                             <ColorSchemeToggle />
                         </Group>

@@ -1,9 +1,9 @@
 import CustomDataTable from '@/components/tables/filters/CustomDataTable'
 import HeaderAndFooterWrapper from '@/layouts/HeaderFooterWrapper'
-import { API_ENDPOINTS, MAINNET_API_ROOT, SEPOLIA_API_KEY, SEPOLIA_API_ROOT } from '@/utils/constants'
+import { API_ENDPOINTS, MAINNET_API_ROOT, SEPOLIA_API_ROOT } from '@/utils/constants'
 import { Group, Stack, Text, Paper, Box, useMantineColorScheme, useMantineTheme } from '@mantine/core'
 import { IconCoin, IconHash, IconNumbers, IconPhoto } from '@tabler/icons-react'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useMemo } from 'react'
 import TokensPageWrapper from '@/components/tokens/TokensPageWrapper'
 import TokenFilters from '@/components/tokens/TokenFilters'
 import TokenIcon from '@/components/tokens/TokenIcon'
@@ -15,7 +15,6 @@ const AllTokens = () => {
     const [network, setNetwork] = useState<string>("SN_SEPOLIA")
     const [search, setSearch] = useDebouncedState<string>("", 500)
     const [tokenType, setTokenType] = useState<string>("all")
-    const [filters, setFilters] = useState<any>({})
     const { colorScheme } = useMantineColorScheme()
     const theme = useMantineTheme()
     const isDark = colorScheme === 'dark'
@@ -35,38 +34,28 @@ const AllTokens = () => {
         }
     }
 
-    // Update filters when search or token type changes
-    useEffect(() => {
-        const newFilters = { ...filters }
+    // Derive filters from search and tokenType (no state update, no extra render)
+    const filters = useMemo(() => {
+        const newFilters: any = {}
         
-        // Update search filter
         if (search) {
             newFilters.search = search
-        } else {
-            delete newFilters.search
         }
         
-        // Update token type filter
         if (tokenType === 'erc20') {
             newFilters.is_erc20 = 'true'
-            delete newFilters.is_erc721
         } else if (tokenType === 'erc721') {
             newFilters.is_erc721 = 'true'
-            delete newFilters.is_erc20
-        } else {
-            // All tokens
-            delete newFilters.is_erc20
-            delete newFilters.is_erc721
         }
         
-        setFilters(newFilters)
+        return newFilters
     }, [search, tokenType])
 
     const getUrl = () => {
         if (network === "SN_SEPOLIA") {
-            return `${SEPOLIA_API_ROOT}/${API_ENDPOINTS.ALL_TOKENS}/`
+            return `${SEPOLIA_API_ROOT}${API_ENDPOINTS.ALL_TOKENS}/`
         } else if (network === "SN_MAIN") {
-            return `${MAINNET_API_ROOT}/${API_ENDPOINTS.ALL_TOKENS}/`
+            return `${MAINNET_API_ROOT}${API_ENDPOINTS.ALL_TOKENS}/`
         }
         return ""
     }

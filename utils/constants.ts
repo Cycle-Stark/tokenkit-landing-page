@@ -1,13 +1,21 @@
 
-export const DEFAULT_API_ROOT = process.env.NEXT_PUBLIC_DEFAULT_API_ROOT
-export const SEPOLIA_API_ROOT = process.env.NEXT_PUBLIC_SEPOLIA_API_ROOT
-export const MAINNET_API_ROOT = process.env.NEXT_PUBLIC_MAINNET_API_ROOT
-export const DEFAULT_APP_URL = process.env.NEXT_PUBLIC_DEFAULT_APP_URL
+export const API_ROOT = process.env.NEXT_PUBLIC_API_ROOT
+export const API_ROOT_SEPOLIA = process.env.NEXT_PUBLIC_API_ROOT_SEPOLIA
+export const APP_URL = process.env.NEXT_PUBLIC_APP_URL
 export const BASE_MEDIA_URL = process.env.NEXT_PUBLIC_BASE_MEDIA_URL
+export const API_KEY = process.env.NEXT_PUBLIC_API_KEY
 
-// AUTH TOKENS
-export const SEPOLIA_API_KEY = process.env.NEXT_PUBLIC_SEPOLIA_API_KEY
-export const MAINNET_API_KEY = process.env.NEXT_PUBLIC_MAINNET_API_KEY
+// Network-specific API endpoints
+export const MAINNET_API_ROOT = API_ROOT || "http://localhost:8000"
+export const SEPOLIA_API_ROOT = API_ROOT_SEPOLIA || "http://localhost:8001"
+
+export const SDK_URL = process.env.NEXT_PUBLIC_SDK_URL
+export const API_URL = process.env.NEXT_PUBLIC_API_URL
+
+export const SDK_DOCUMENTATION = process.env.NEXT_PUBLIC_SDK_DOCUMENTATION
+export const API_DOCUMENTATION = process.env.NEXT_PUBLIC_API_DOCUMENTATION
+export const CONTRACT_DEPLOYER_URL = process.env.NEXT_PUBLIC_CONTRACT_DEPLOYER_URL
+
 
 export const APP_NAME: string = "Tokenkit"
 export const APP_KEY: string = "TOKENKIT"
@@ -34,8 +42,8 @@ export const API_ENDPOINTS = {
     EVENTS: `/extras/events`,
     PARTNERS: '/extras/partners',
     EVENT_TYPES: '/extras/event-types',
-    LISTED_TOKENS: 'listed-tokens',
-    ALL_TOKENS: 'tokens',
+    LISTED_TOKENS: '/listed-tokens',
+    ALL_TOKENS: '/tokens',
 
     // // Agric
     // FARMERS: `/agric/farmers`,

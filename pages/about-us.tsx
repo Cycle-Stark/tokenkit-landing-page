@@ -81,7 +81,7 @@ const teamMembers = [
 // Company timeline data
 const companyTimeline = [
   {
-    title: 'TokenKit Founded',
+    title: 'Tokenkit Founded',
     description: 'Started with a vision to simplify token management on Starknet.',
     date: 'January 2023',
     icon: <IconCoin size={16} />
@@ -100,7 +100,7 @@ const companyTimeline = [
   },
   {
     title: 'Public Launch',
-    description: 'Released TokenKit 1.0 with full feature set and documentation.',
+    description: 'Released Tokenkit 1.0 with full feature set and documentation.',
     date: 'October 2023',
     icon: <IconDeviceDesktop size={16} />
   }
@@ -145,7 +145,7 @@ const AboutUs = () => {
         <Container size="xl">
           <Stack align="center" gap="xl">
             <Title order={1} size={48} ta="center" fw={700}>
-              About TokenKit
+              About Tokenkit
             </Title>
             <Text size="xl" ta="center" maw={700} mx="auto">
               We're building the future of token management on Starknet, empowering developers with powerful tools and APIs.
@@ -161,7 +161,7 @@ const AboutUs = () => {
             <Stack gap="xl">
               <Title order={2} size={36}>Our Mission</Title>
               <Text size="lg">
-                At TokenKit, our mission is to provide developers with seamless access to token data and intuitive tools that enhance their experience in building decentralized applications on Starknet. We aim to simplify token interactions for everyone.
+                At Tokenkit, our mission is to provide developers with seamless access to token data and intuitive tools that enhance their experience in building decentralized applications on Starknet. We aim to simplify token interactions for everyone.
               </Text>
               <Text size="lg">
                 We believe that by creating robust infrastructure and developer-friendly tools, we can accelerate the adoption of Starknet and contribute to the growth of the entire ecosystem.
@@ -239,7 +239,7 @@ const AboutUs = () => {
         <Stack gap="xl" align="center" mb={40}>
           <Title order={2} size={36} ta="center">Our Journey</Title>
           <Text size="lg" ta="center" maw={700} mx="auto">
-            From idea to reality, here's how TokenKit has evolved over time.
+            From idea to reality, here's how Tokenkit has evolved over time.
           </Text>
         </Stack>
         
@@ -280,7 +280,7 @@ const AboutUs = () => {
           <Stack gap="xl" align="center" mb={40}>
             <Title order={2} size={36} ta="center" c={isDark ? 'white' : undefined}>Meet Our Team</Title>
             <Text size="lg" ta="center" maw={700} mx="auto" c={isDark ? 'white' : undefined}>
-              The passionate individuals behind TokenKit working to revolutionize token management on Starknet.
+              The passionate individuals behind Tokenkit working to revolutionize token management on Starknet.
             </Text>
           </Stack>
           

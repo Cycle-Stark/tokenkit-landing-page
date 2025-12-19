@@ -1,0 +1,74 @@
+name: Tokenkit Frontend deploy
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install sops
+        run: |
+          curl -Lo sops https://github.com/mozilla/sops/releases/download/v3.9.0/sops-v3.9.0.linux.amd64
+          chmod +x sops
+          sudo mv sops /usr/local/bin/sops
+
+      - name: Set up age for decryption
+        run: |
+          mkdir -p ~/.config/sops/age
+          echo "${{ secrets.AGE_PRIVATE_KEY }}" > ~/.config/sops/age/keys.txt
+
+      - name: Decrypt .env file
+        run: sops --decrypt secret.env > .env
+
+      - name: Install SSH Client
+        run: sudo apt-get install -y sshpass
+
+      - name: Transfer files to Contabo
+        uses: appleboy/scp-action@v0.1.6
+        with:
+          host: ${{ secrets.CONTABO_HOST }}
+          username: root
+          key: ${{ secrets.CONTABO_SSH_KEY }}
+          source: "."
+          target: "/home/tokenkit_frontend/"
+
+      - name: Redeploy Application
+        env:
+          VPS_PASSWORD: ${{ secrets.CONTABO_PASSWORD }}
+        run: |
+          sshpass -p "$VPS_PASSWORD" ssh -o StrictHostKeyChecking=no root@${{ secrets.CONTABO_HOST }} << 'EOF'
+            # Navigate to the frontend directory
+            cd /home/tokenkit_frontend || exit
+
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            
+            # Verify Node.js is available
+            if ! command -v node &> /dev/null; then
+                echo "Error: Node.js not found. Please install Node.js first."
+                exit 1
+            fi
+            
+            echo "Node version: $(node --version)"
+            echo "Yarn version: $(yarn --version)"
+
+            echo "Installing/updating dependencies..."
+            yarn
+
+            echo "Building application..."
+            yarn build
+
+            echo "Restarting PM2 process..."
+            pm2 delete tokenkit_frontend || true
+            pm2 start ecosystem.config.js
+            pm2 save
+            # sudo systemctl restart caddy
+          EOF

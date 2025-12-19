@@ -1,7 +1,7 @@
 import { MantineColorScheme } from "@mantine/core"
 import { isArray, isObject } from "util";
 import { RequestProps } from "./types";
-import { DEFAULT_API_ROOT, DEFAULT_APP_URL } from "./constants";
+import { API_ROOT, APP_URL } from "./constants";
 import axios, { AxiosRequestConfig } from "axios";
 import { shortString } from "starknet";
 import BigNumber from "bignumber.js"
@@ -63,10 +63,7 @@ export function displayErrors(form: any, errors: any, parentKey: string | null =
 }
 
 export const makeRequestOne = async ({ url, method, extra_headers, data, params, useNext, useDirectUrl }: RequestProps) => {
-    let BASE_URL = DEFAULT_API_ROOT
-    if (useNext) {
-        BASE_URL = `${DEFAULT_APP_URL}/api`
-    }
+   let BASE_URL = API_ROOT;
     const options: AxiosRequestConfig = {
         method: method,
         url: useDirectUrl ? url : `${BASE_URL}${url}/`,
@@ -101,7 +98,7 @@ export function stripSpecialCharacters(str: string) {
 
 
 export function updatePageFilter(path: string, page: any) {
-    const url = new URL(path, DEFAULT_APP_URL); // Parse the existing URL
+    const url = new URL(path, APP_URL); // Parse the existing URL
 
     // Get the existing query parameters as an object
     const params = Object.fromEntries(url.searchParams.entries());
@@ -110,7 +107,7 @@ export function updatePageFilter(path: string, page: any) {
     params.page = page;
 
     // Create a new URL with the updated query parameters
-    const updatedUrl = new URL(url.pathname, DEFAULT_APP_URL);
+    const updatedUrl = new URL(url.pathname, APP_URL);
     updatedUrl.search = new URLSearchParams(params).toString();
 
     return updatedUrl.toString();

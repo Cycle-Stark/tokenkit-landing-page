@@ -53,12 +53,12 @@ const ListTokenComponent = () => {
             if (account && chainId) {
                 console.log("We go")
                 setLoading(true)
-                let contractAddress = "0x5e9a1965c00b0fd04b78b61da0b2299c0730f85ce35ae124c79ccd4642f1dc5"
+                let contractAddress = "0x467d26d0486e6be4b83ee4b8eaf43b25a7fdd19100ecf8ba420c077e20f9624"
                 if (chainId === "SN_SEPOLIA") {
                     contractAddress = "0x5e9a1965c00b0fd04b78b61da0b2299c0730f85ce35ae124c79ccd4642f1dc5"
                 }
                 else {
-                    contractAddress = "0x5e9a1965c00b0fd04b78b61da0b2299c0730f85ce35ae124c79ccd4642f1dc5"
+                    contractAddress = "0x467d26d0486e6be4b83ee4b8eaf43b25a7fdd19100ecf8ba420c077e20f9624"
                 }
                 const contract = new Contract(TOKENKIT_ABI, contractAddress, account)
 

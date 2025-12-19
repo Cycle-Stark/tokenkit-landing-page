@@ -15,18 +15,17 @@ import { ReactSVG } from "react-svg";
 
 const SpiralImages = () => {
   const images = [
-    "https://cryptologos.cc/logos/starknet-token-strk-logo.png?v=040",
-    "https://cryptologos.cc/logos/usd-coin-usdc-logo.png?v=040",
-    "https://cryptologos.cc/logos/ethereum-eth-logo.png?v=040",
-    "https://cryptologos.cc/logos/tether-usdt-logo.png?v=040",
-    "https://cryptologos.cc/logos/starknet-token-strk-logo.png?v=040",
-    "https://cryptologos.cc/logos/multi-collateral-dai-dai-logo.png?v=040",
-    "https://s2.coinmarketcap.com/static/img/coins/64x64/33912.png",
-    "https://s2.coinmarketcap.com/static/img/coins/64x64/17445.png",
-    "https://cryptologos.cc/logos/starknet-token-strk-logo.png?v=040",
-    "https://assets.coingecko.com/coins/images/37715/standard/135474885.png?1715330450",
-    "https://s2.coinmarketcap.com/static/img/coins/64x64/18990.png",
-    "https://cryptologos.cc/logos/bitcoin-btc-logo.png?v=040"
+    "/static/starknet-token-strk-logo.png",
+    "/static/usd-coin-usdc-logo.png",
+    "/static/ethereum-eth-logo.png",
+    "/static/tether-usdt-logo.png",
+    "/static/multi-collateral-dai-dai-logo.png",
+    "/static/33912.png",
+    "/static/17445.png",
+    "/static/starknet-token-strk-logo.png",
+    "/static/starknet-token-strk-logo.png",
+    "/static/18990.png",
+    "/static/bitcoin-btc-logo.png"
   ];
 
   const [positions, setPositions] = useState<any>([
@@ -130,18 +129,6 @@ function ProjectTimeline() {
   const strokeSize = 1.5
   const tokenkitTimeline: ITimeline[] = [
     {
-      title: "API for Assets on Starknet",
-      icon: <IconApi size={iconSize} stroke={em(strokeSize)} />,
-      description: "Unified access to token balances, transfers, and metadata",
-      date: "2024 Q2"
-    },
-    {
-      title: "Token Selection UI",
-      icon: <IconComponents size={iconSize} stroke={em(strokeSize)} />,
-      description: "Prebuilt component for seamless token integration in dApps",
-      date: "2024 Q3"
-    },
-    {
       date: 'Q1 2024',
       title: 'Tokenkit Development Kickoff',
       description: 'Started development of Tokenkit, focusing on core token management.',
@@ -161,28 +148,52 @@ function ProjectTimeline() {
     },
     {
       date: 'Q2 2024',
+      title: 'API for Assets on Starknet',
+      icon: <IconApi size={iconSize} stroke={em(strokeSize)} />,
+      description: 'Unified access to token balances, transfers, and metadata',
+    },
+    {
+      date: 'Q2 2024',
       title: 'API & SDK Release',
       description: 'Public API and SDK for seamless integration with dApps.',
       icon: <IconApi size={iconSize} stroke={em(strokeSize)} />,
     },
     {
-      date: 'Q3 2024',
-      title: 'AI-Powered Notifications',
-      description: 'Intelligent real-time alerts for token transfers and balance changes.',
+      date: 'Q2 2024',
+      title: 'Token Selection UI',
+      icon: <IconComponents size={iconSize} stroke={em(strokeSize)} />,
+      description: 'Prebuilt component for seamless token integration in dApps',
+    },
+    {
+      date: 'Q1 2025',
+      title: 'Tokenkit Release v2.0',
+      icon: <IconComponents size={iconSize} stroke={em(strokeSize)} />,
+      description: 'Release of Tokenkit v2.0 with new features and improvements.',
+    },
+    {
+      date: 'Q2 2025',
+      title: 'Real-Time Notifications',
+      description: 'Telegram and email notifications for token transfers and important events.',
       icon: <IconBell size={iconSize} stroke={em(strokeSize)} />,
     },
     {
-      date: 'Q4 2024',
+      date: 'Q3 2025',
+      title: 'AI-Powered Notifications',
+      description: 'Intelligent real-time alerts with customizable triggers and smart filtering.',
+      icon: <IconBell size={iconSize} stroke={em(strokeSize)} />,
+    },
+    {
+      date: 'Q4 2025',
       title: 'Advanced Analytics Dashboard',
       description: 'Customizable monitoring for asset performance and liquidity pools.',
       icon: <IconChartBar size={iconSize} stroke={em(strokeSize)} />,
     },
-    {
-      date: 'Q1 2025',
-      title: 'Multi-Chain Support',
-      description: 'Expanded compatibility across EVM and non-EVM networks.',
-      icon: <IconLayersIntersect size={iconSize} stroke={em(strokeSize)} />,
-    },
+    // {
+    //   date: 'Q1 2026',
+    //   title: 'Multi-Chain Support',
+    //   description: 'Expanded compatibility across EVM and non-EVM networks.',
+    //   icon: <IconLayersIntersect size={iconSize} stroke={em(strokeSize)} />,
+    // },
     {
       date: 'Q2 2025',
       title: 'On-Chain Token Discovery',
@@ -212,9 +223,10 @@ function ProjectTimeline() {
       </Text>
 
       <Timeline
-        active={1}
+        active={6}
         bulletSize={24}
         lineWidth={2}
+        color="green"
         align="left"
         styles={{
           // itemBullet: { backgroundColor: theme.colors.blue[6] },
@@ -228,7 +240,7 @@ function ProjectTimeline() {
             bullet={item.icon}
           // lineVariant={index % 2 === 0 ? 'dashed' : 'solid'}
           >
-            <Text color="dimmed" size="sm">
+            <Text c="dimmed" size="sm">
               {item.description}
             </Text>
             <Text size="xs" mt={4}>
@@ -326,21 +338,21 @@ const TokenSelectionComponent = () => {
                 <ThemeCard key={`theme_${theme.accessor}`}
                   theme={themes[theme.accessor]}
                   title={theme.title} setCurrentTheme={setCurrentTheme}
-                  activeTheme={currentTheme}
+                  activeTheme={{...currentTheme, fonts: {fontFamily: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji"}}}
                 />
               ))
             }
           </SimpleGrid>
         </Stack>
       </Grid.Col>
-      <Grid.Col span={{ md: 6 }}>
+      <Grid.Col span={{ md: 6 }}> 
         <TokenKitWrapper
           network="SN_SEPOLIA"
-          mainnetAPIKey="saWsCXrZ.clM7UA9l0VMui6dYInUWlVXCYTo5428e"
-          sepoliaAPIKey={'EeRumkN0.GbgE6z0Kfqq9U2RR8kIr91f1YfNLxJku'}
+          mainnetAPIKey={process.env.NEXT_PUBLIC_MAINNET_API_KEY as string}
+          sepoliaAPIKey={process.env.NEXT_PUBLIC_SEPOLIA_API_KEY as string}
           themeObject={currentTheme}
-          protocol='http'
-          endpoint={"localhost:8000"}
+          protocol={process.env.NEXT_PUBLIC_API_PROTOCOL as "https" | "http"}
+          endpoint={process.env.NEXT_PUBLIC_API_ENDPOINT as string}
         >
           <Stack align="center">
 
@@ -523,7 +535,7 @@ function LandingPage({ blogs }: ILandingPage) {
                   <Stack mih={"400px"} justify="center" h={'100%'}>
                     <Title order={2} fw={400} size={"32px"}>Create & Manage Tokens with Ease</Title>
                     <Text size="md">
-                      TokenKit simplifies the creation of both Fungible and Non-Fungible tokens (NFTs) with our intuitive interfaces and APIs. Launch your own tokens on StarkNet with minimal technical knowledge and maximum flexibility. Access detailed documentation and support for all token creation processes.
+                      Tokenkit simplifies the creation of both Fungible and Non-Fungible tokens (NFTs) with our intuitive interfaces and APIs. Launch your own tokens on Starknet with minimal technical knowledge and maximum flexibility. Access detailed documentation and support for all token creation processes.
                     </Text>
                     <List spacing={"sm"}>
                       <List.Item icon={<IconCoins stroke={em(1.5)} />}>
@@ -548,13 +560,13 @@ function LandingPage({ blogs }: ILandingPage) {
           <Grid>
             <Grid.Col span={{ md: 5 }}>
               <Title order={2} fw={400} size={"32px"}>
-                Simplify Liquidity Pool Management with TokenKit's Robust API
+                Simplify Liquidity Pool Management with Tokenkit's Robust API
               </Title>
             </Grid.Col>
             <Grid.Col span={{ md: 7 }}>
               <Stack justify="center">
                 <Text size="md">
-                  Tokenkit's API streamlines the complexities of managing liquidity pools for decentralized exchanges. Our tools ensure optimal performance, real-time updates, and enhanced user engagement, making liquidity management more efficient and accessible for developers on StarkNet.
+                  Tokenkit's API streamlines the complexities of managing liquidity pools for decentralized exchanges. Our tools ensure optimal performance, real-time updates, and enhanced user engagement, making liquidity management more efficient and accessible for developers on Starknet.
                 </Text>
                 <SimpleGrid cols={2}>
                   <SimpleCard title="Real-Time" description="Access up-to-the-minute data on liquidity pool performance and activity." />
@@ -571,7 +583,7 @@ function LandingPage({ blogs }: ILandingPage) {
               <Stack mih={"400px"} justify="center">
                 <Title order={2} fw={400} size={"32px"}>Real-Time Notifications for Asset Activities and Event Tracking</Title>
                 <Text size="md">
-                  Stay informed with our advanced notification system. Get real-time alerts on asset activities, ensuring you’re always ahead of market changes and critical events within your StarkNet dApps.
+                  Stay informed with our advanced notification system. Get real-time alerts on asset activities, ensuring you’re always ahead of market changes and critical events within your Starknet dApps.
                 </Text>
                 <SimpleGrid cols={2}>
                   <SimpleCard title="100%" description="Real-time alert delivery success rate." />
