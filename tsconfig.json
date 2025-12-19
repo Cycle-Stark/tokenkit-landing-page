@@ -19,6 +19,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "../api_frontend/components/admin/forms/TokenCreateForm.tsx"],
   "exclude": ["node_modules"]
 }

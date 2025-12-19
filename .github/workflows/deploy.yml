@@ -1,4 +1,4 @@
-name: Tokenkit Frontend Redeploy
+name: Tokenkit Frontend deploy
 
 on:
   workflow_dispatch:
@@ -47,14 +47,28 @@ jobs:
           sshpass -p "$VPS_PASSWORD" ssh -o StrictHostKeyChecking=no root@${{ secrets.CONTABO_HOST }} << 'EOF'
             # Navigate to the frontend directory
             cd /home/tokenkit_frontend || exit
+
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             
+            # Verify Node.js is available
+            if ! command -v node &> /dev/null; then
+                echo "Error: Node.js not found. Please install Node.js first."
+                exit 1
+            fi
+            
+            echo "Node version: $(node --version)"
+            echo "Yarn version: $(yarn --version)"
+
             echo "Installing/updating dependencies..."
-            pnpm i
-            
+            yarn
+
             echo "Building application..."
-            pnpm run build
-            
+            yarn build
+
             echo "Restarting PM2 process..."
-            /root/.nvm/versions/node/v22.14.0/bin/pm2 restart tokenkit_frontend
+            pm2 delete tokenkit_frontend || true
+            pm2 start ecosystem.config.js
+            pm2 save
             # sudo systemctl restart caddy
           EOF

@@ -11,7 +11,7 @@ import React, { useEffect, useState } from "react"
 import GlobalFilterFormAjax from "./GlobalFilterFormAjax"
 import { FilterField } from "./helpers"
 import useSWR from "swr"
-import { TABLE_ICON_SIZE } from "@/utils/constants"
+import { API_KEY, TABLE_ICON_SIZE } from "@/utils/constants"
 import CustomError from "@/components/common/CustomError"
 
 
@@ -63,7 +63,7 @@ const CustomDataTable = (props: ICustomDataTable) => {
     const [deleting, setDeleting] = useState<boolean>(false)
     const [filters, setFilters] = useState<null | any>(defaultFilters)
     const [page, setPage] = useState(defaultFilters?.page ?? 1)
-    const [recordsPerPage, setRecordsPerPage] = useState(defaultFilters?.limit ?? 10)
+    const [recordsPerPage, _setRecordsPerPage] = useState(defaultFilters?.limit ?? 10)
     const { colorScheme } = useMantineColorScheme()
 
     const { token } = useAppContext();
@@ -71,9 +71,9 @@ const CustomDataTable = (props: ICustomDataTable) => {
         url: url, method: method,
         extra_headers: {
             //  AUTHORIZATION: `Bearer ${token}`,
-            'api-key': token
+            'api-key': `${API_KEY}`
         },
-        params: { ...filters, page }, useNext: useNext, useDirectUrl
+        params: { ...filters, page, limit: recordsPerPage }, useNext: useNext, useDirectUrl
     }, makeRequestOne)
 
     const records = data?.data?.results

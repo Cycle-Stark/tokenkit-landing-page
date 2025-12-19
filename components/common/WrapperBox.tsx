@@ -1,0 +1,25 @@
+import { isDarkMode } from "@/utils/functions"
+import { Box, useMantineColorScheme } from "@mantine/core"
+import { ReactNode } from "react"
+
+interface IWrapperBox {
+    color: string
+    children: ReactNode
+    extraStyles?: any
+}
+
+const WrapperBox = (props: IWrapperBox) => {
+    const { color, children, extraStyles } = props
+    const { colorScheme } = useMantineColorScheme()
+    return (
+        <Box p={'md'} style={theme => ({
+            background: isDarkMode(colorScheme) ? theme.colors.dark[9] : theme.colors[color][2],
+            borderRadius: theme.radius.lg,
+            ...extraStyles
+        })}>
+            {children}
+        </Box>
+    )
+}
+
+export default WrapperBox
