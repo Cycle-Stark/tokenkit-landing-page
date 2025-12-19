@@ -5,7 +5,7 @@ const withBundleAnalyzer = bundleAnalyzer({
 });
 
 export default withBundleAnalyzer({
-  reactStrictMode: false,
+  reactStrictMode: process.env.NODE_ENV === "production" ? true : false,
   eslint: {
     ignoreDuringBuilds: true,
   },

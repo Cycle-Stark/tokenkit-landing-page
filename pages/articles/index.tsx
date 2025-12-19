@@ -5,7 +5,7 @@ import { CustomLinkPagination } from '@/components/common/CustomPagination';
 import SEOHeader from '@/components/seo/SEOHeader';
 import HeaderAndFooterWrapper from '@/layouts/HeaderFooterWrapper';
 import { cookieSetter } from '@/providers/AppProvider';
-import { DEFAULT_APP_URL, API_ENDPOINTS, LOCAL_STORAGE_KEYS } from '@/utils/constants';
+import { APP_URL, API_ENDPOINTS, LOCAL_STORAGE_KEYS } from '@/utils/constants';
 import { isDarkMode, makeRequestOne } from '@/utils/functions';
 import { Alert, Box, Center, Container, em, Grid, Stack, Text, TextInput, Title, useMantineColorScheme, useMantineTheme } from '@mantine/core'
 import { useForm } from '@mantine/form';
@@ -67,7 +67,7 @@ const Articles = ({ articles, totalPages, page, recentArticles, categories, quer
 
     return (
         <>
-            <SEOHeader url={`${DEFAULT_APP_URL}/articles`} title={'News & Articles'} />
+            <SEOHeader url={`${APP_URL}/articles`} title={'News & Articles'} />
             <Stack key={router.asPath}>
                 <Box
                     h={'400px'}

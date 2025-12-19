@@ -1,20 +1,18 @@
 import { RichTextEditor, Link } from '@mantine/tiptap';
 import { useEditor } from '@tiptap/react';
-import Highlight from '@tiptap/extension-highlight';
 import StarterKit from '@tiptap/starter-kit';
 import Underline from '@tiptap/extension-underline';
+import Highlight from '@tiptap/extension-highlight';
 import TextAlign from '@tiptap/extension-text-align';
 import Superscript from '@tiptap/extension-superscript';
 import SubScript from '@tiptap/extension-subscript';
 import Image from '@tiptap/extension-image'
 import Youtube from '@tiptap/extension-youtube'
-import { Box, ScrollArea, useMantineColorScheme, useMantineTheme } from '@mantine/core';
+import Placeholder from '@tiptap/extension-placeholder';
+import { Box, ScrollArea, useMantineTheme, useMantineColorScheme } from '@mantine/core';
 import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight';
 import { createLowlight, all } from 'lowlight';
-import Placeholder from '@tiptap/extension-placeholder';
 import { CodeBlockControl, ImageControl, YoutubeControl } from './utils';
-import { isDarkMode } from '@/utils/functions';
-
 
 interface ICustomRTE {
     updateForm?: any
@@ -64,7 +62,7 @@ function CustomRTE(props: ICustomRTE) {
 
     return (
         <Box>
-            <RichTextEditor spellCheck={false} p={padding} editor={editor} style={{
+            <RichTextEditor spellCheck={false} editor={editor} style={{
                 height: readonly ? 'fit-content' : height ?? 'calc(100dvh - 150px)',
                 borderRadius: '0px', borderStyle: readonly ? 'none' : 'solid',
                 padding: 0,
@@ -75,7 +73,7 @@ function CustomRTE(props: ICustomRTE) {
             >
                 {
                     !readonly ? (
-                        <RichTextEditor.Toolbar sticky={true} stickyOffset={0} bg={isDarkMode(colorScheme) ? theme.colors.dark[8] : theme.colors.gray[1]}>
+                        <RichTextEditor.Toolbar sticky={true} stickyOffset={0}>
                             <RichTextEditor.ControlsGroup>
                                 <RichTextEditor.Bold />
                                 <RichTextEditor.Italic />
@@ -127,7 +125,7 @@ function CustomRTE(props: ICustomRTE) {
                         </RichTextEditor.Toolbar>
                     ) : null
                 }
-                <RichTextEditor.Content p={"0"} styles={{
+                <RichTextEditor.Content styles={{
                     root: {
                         width: '100%'
                     }

@@ -11,7 +11,7 @@ import appState from '@/utils/storage';
 import { bigintToShortStr } from '@/utils/functions';
 import { IconAlertTriangle } from '@tabler/icons-react';
 import { setCookie } from 'cookies-next';
-import { MAINNET_API_KEY, SEPOLIA_API_KEY } from '@/utils/constants';
+import { API_KEY } from '@/utils/constants';
 ;
 
 interface IAppContext {
@@ -276,9 +276,9 @@ const AppProvider = ({ children }: IAppProvider) => {
 
     useEffect(() => {
         if (chainId === "SN_SEPOLIA") {
-            setAccessToken(`${SEPOLIA_API_KEY}`)
+            setAccessToken(`${API_KEY}`)
         } else if (chainId === "SN_MAIN") {
-            setAccessToken(`${MAINNET_API_KEY}`)
+            setAccessToken(`${API_KEY}`)
         }
     }, [])
 

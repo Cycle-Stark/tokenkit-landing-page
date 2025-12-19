@@ -2,7 +2,7 @@ import { SidebarArticleCard } from '@/components/common/ArticleComponents'
 import CustomRTE from '@/components/rte/CustomRTE'
 import SEOHeader from '@/components/seo/SEOHeader'
 import HeaderAndFooterWrapper from '@/layouts/HeaderFooterWrapper'
-import { APP_NAME, API_ENDPOINTS, DEFAULT_APP_URL } from '@/utils/constants'
+import { APP_NAME, API_ENDPOINTS, APP_URL } from '@/utils/constants'
 import { isDarkMode, makeRequestOne } from '@/utils/functions'
 import { Box, Stack, Title, Container, Grid, useMantineTheme, useMantineColorScheme, Image } from '@mantine/core'
 import Head from 'next/head'
@@ -20,7 +20,7 @@ const SingleArticle = (props: ISingleArticle) => {
 
     return (
         <div key={`article_${article.id}`}>
-            <SEOHeader url={`${DEFAULT_APP_URL}/articles/${article?.id}/${article?.slug}`} title={`${article?.title}`} />
+            <SEOHeader url={`${APP_URL}/articles/${article?.id}/${article?.slug}`} title={`${article?.title}`} />
             <Box>
                 <Stack>
                     <Box py={'70px'} style={{

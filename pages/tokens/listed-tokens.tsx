@@ -1,6 +1,6 @@
 import CustomDataTable from '@/components/tables/filters/CustomDataTable'
 import HeaderAndFooterWrapper from '@/layouts/HeaderFooterWrapper'
-import { API_ENDPOINTS, MAINNET_API_ROOT, SEPOLIA_API_KEY, SEPOLIA_API_ROOT } from '@/utils/constants'
+import { API_ENDPOINTS, MAINNET_API_ROOT, SEPOLIA_API_ROOT } from '@/utils/constants'
 import { Group, Stack, Text, Paper, Box, useMantineColorScheme, useMantineTheme, Badge } from '@mantine/core'
 import { IconCoin, IconHash, IconNumbers, IconPhoto, IconStar } from '@tabler/icons-react'
 import React, { useState, useEffect } from 'react'
