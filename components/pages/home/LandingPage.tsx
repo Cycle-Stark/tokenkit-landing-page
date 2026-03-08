@@ -347,12 +347,11 @@ const TokenSelectionComponent = () => {
       </Grid.Col>
       <Grid.Col span={{ md: 6 }}> 
         <TokenKitWrapper
-          network="SN_SEPOLIA"
-          mainnetAPIKey={process.env.NEXT_PUBLIC_MAINNET_API_KEY as string}
-          sepoliaAPIKey={process.env.NEXT_PUBLIC_SEPOLIA_API_KEY as string}
+          network="SN_MAIN"
+          apiKey={process.env.NEXT_PUBLIC_API_KEY as string}
+          mainnetEndpoint={process.env.NEXT_PUBLIC_MAINNET_ENDPOINT as string}
+          sepoliaEndpoint={process.env.NEXT_PUBLIC_SEPOLIA_ENDPOINT as string}
           themeObject={currentTheme}
-          protocol={process.env.NEXT_PUBLIC_API_PROTOCOL as "https" | "http"}
-          endpoint={process.env.NEXT_PUBLIC_API_ENDPOINT as string}
         >
           <Stack align="center">
 
