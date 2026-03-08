@@ -2798,10 +2798,10 @@ split2@^4.0.0:
   resolved "https://registry.npmjs.org/split2/-/split2-4.2.0.tgz"
   integrity sha512-UcjcJOWknrNkF6PLX83qcHM6KHgVKNkV62Y8a5uYDVv9ydGQVwAHMKqHdJje1VTWpljG0WYpCDhrCdAOYH4TWg==
 
-starknet-tokenkit@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.npmjs.org/starknet-tokenkit/-/starknet-tokenkit-3.0.2.tgz"
-  integrity sha512-dVySSdg7KwicTyfIZhknlEEZH7BQ+2KhoDwBf1Rlj0V4oP3/O8x3YErSJpf30VDz9zlRC9UNHJNdYTt7zTU5rg==
+starknet-tokenkit@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.npmjs.org/starknet-tokenkit/-/starknet-tokenkit-3.0.3.tgz"
+  integrity sha512-5d5vN6//0JElAx7fs5bcmdVbdjbhGarjTS05G9gMqHhksmJU+kEIejKZ+dOKPv440H31rBS9Rv9hA7aX7w66rw==
   dependencies:
     bignumber.js "^9.1.2"
 
