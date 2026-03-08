@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "rm -rf .next && next build",
-    "analyze": "rm -rf .next && ANALYZE=true next build",
+    "build": "rm -rf .next 2>/dev/null; next build",
+    "analyze": "rm -rf .next 2>/dev/null; ANALYZE=true next build",
     "start": "PORT=3000 next start",
     "export": "next build && next export",
     "typecheck": "tsc --noEmit"
