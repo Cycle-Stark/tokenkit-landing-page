@@ -6,7 +6,6 @@ const withBundleAnalyzer = bundleAnalyzer({
 
 export default withBundleAnalyzer({
   reactStrictMode: process.env.NODE_ENV === "production" ? true : false,
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  // Next.js 16 dropped the `eslint` config key — lint behaviour is now
+  // controlled via the standalone `next lint` command, not next.config.
 });
