@@ -9,11 +9,17 @@ import TokenFilters from '@/components/tokens/TokenFilters'
 import TokenIcon from '@/components/tokens/TokenIcon'
 import TokenAddress from '@/components/tokens/TokenAddress'
 import { convertToReadableTokens } from '@/utils/functions'
-import { useDebouncedState } from '@mantine/hooks'
+import { useDebouncedValue } from '@mantine/hooks'
 
 const AllTokens = () => {
     const [network, setNetwork] = useState<string>("SN_SEPOLIA")
-    const [search, setSearch] = useDebouncedState<string>("", 500)
+    // Two-stage search: `searchInput` is instant (bound to the TextInput so
+    // typing feels responsive); `search` is the debounced value used for the
+    // API query and the table remount key. The previous implementation used
+    // `useDebouncedState`, which delays the state update itself — meaning the
+    // TextInput's controlled value lagged ~500ms behind every keystroke.
+    const [searchInput, setSearchInput] = useState<string>("")
+    const [search] = useDebouncedValue(searchInput, 400)
     const [tokenType, setTokenType] = useState<string>("all")
     const { colorScheme } = useMantineColorScheme()
     const theme = useMantineTheme()
@@ -65,11 +71,11 @@ const AllTokens = () => {
             title="All Tokens" 
             description="Explore all tokens available on the Starknet blockchain"
         >
-            <TokenFilters 
-                network={network} 
+            <TokenFilters
+                network={network}
                 onNetworkChange={setNetwork}
-                search={search}
-                onSearchChange={setSearch}
+                search={searchInput}
+                onSearchChange={setSearchInput}
                 tokenType={tokenType}
                 onTokenTypeChange={setTokenType}
             />
