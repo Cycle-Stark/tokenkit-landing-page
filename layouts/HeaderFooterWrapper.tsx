@@ -52,16 +52,7 @@ const navlinks: CustomDrawerLinkProps[] = [
     { label: 'Home', href: '/', icon: <IconHome2 /> },
     { label: 'Launch Token', href: '/launch-token', icon: <IconPhone /> },
     { label: 'List Token', href: '/list-token', icon: <IconBriefcase /> },
-    {
-        label: 'Tokens', href: '#',
-        icon: <IconLocation />,
-        children: [
-            { label: 'Listed Tokens', href: '/tokens/listed-tokens', icon: <IconPhone /> },
-            { label: 'All Tokens', href: '/tokens/all-tokens', icon: <IconPhone /> },
-            // { label: 'Fungible Tokens', href: '/tokens/all-tokens', icon: <IconPhone /> },
-            // { label: 'Non-Fungible Tokens (NFTs)', href: '/tokens/all-tokens', icon: <IconPhone /> },
-        ]
-    },
+    { label: 'Tokens', href: '/tokens/all-tokens', icon: <IconLocation /> },
     { label: 'API', href: process.env.NEXT_PUBLIC_API_URL ?? "#", icon: <IconInfoCircle />, isExternal: true },
     {
         label: 'Resources & Apps', href: '#',

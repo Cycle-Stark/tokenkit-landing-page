@@ -88,6 +88,12 @@ const AllTokens = () => {
             >
                 <Box>
                     <CustomDataTable
+                        // Remount the table whenever the network, token-type
+                        // filter, or search term changes — CustomDataTable
+                        // owns its own internal `page` state, so a remount is
+                        // the simplest way to reset it back to 1 without
+                        // touching the table component's pagination logic.
+                        key={`${network}|${tokenType}|${search}`}
                         url={getUrl()}
                         useDirectUrl={true}
                         method={'GET'}

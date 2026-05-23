@@ -42,7 +42,6 @@ export const API_ENDPOINTS = {
     EVENTS: `/extras/events`,
     PARTNERS: '/extras/partners',
     EVENT_TYPES: '/extras/event-types',
-    LISTED_TOKENS: '/listed-tokens',
     ALL_TOKENS: '/tokens',
 
     // // Agric
